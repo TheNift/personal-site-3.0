@@ -1,8 +1,15 @@
 @import 'tailwindcss';
 
+@theme {
+	--color-yorha: #d1cdb7;
+	--color-yorha-dark: #14130d;
+	--color-dark-blue: #1a1a4d;
+	--color-light-blue: #cce6ff;
+}
+
 @layer components {
 	.btn {
-		@apply px-4 py-2 bg-gray-200 hover:bg-gray-400 transition-colors duration-300;
+		@apply px-4 py-2 bg-gray-200 hover:bg-gray-400 transition-colors duration-300 text-center;
 	}
 }
 

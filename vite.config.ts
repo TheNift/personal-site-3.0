@@ -15,8 +15,10 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@router': path.resolve(__dirname, './src/router'),
-      '@types': path.resolve(__dirname, './src/types'),
+      '@types': path.resolve(__dirname, './src/types/index.ts'),
       '@utils': path.resolve(__dirname, './src/utils'),
+      '@shaders': path.resolve(__dirname, './src/components/shaders/index.ts'),
+      '@models': path.resolve(__dirname, './src/components/models/index.ts'),
     },
   },
 })

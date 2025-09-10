@@ -16,6 +16,14 @@ const strings = {
         ],
         projectReturnText: 'Portfolio',
 	},
+	colors: {
+		white: '#ffffff',
+		black: '#000000',
+		darkBlue: '#1a1a4d',
+		lightBlue: '#cce6ff',
+		yorha: '#d1cdb7',
+		yorhaDark: '#14130d',
+	},
 	home: {
 		title: 'Home',
 	},

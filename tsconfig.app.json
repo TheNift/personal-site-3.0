@@ -26,8 +26,13 @@
 			"@hooks/*": ["./src/hooks/*"],
 			"@pages/*": ["./src/pages/*"],
 			"@router/*": ["./src/router/*"],
+			"@types": ["./src/types/index.ts"],
 			"@types/*": ["./src/types/*"],
-			"@utils/*": ["./src/utils/*"]
+			"@utils/*": ["./src/utils/*"],
+			"@shaders": ["./src/components/shaders/index.ts"],
+			"@shaders/*": ["./src/components/shaders/*"],
+			"@models": ["./src/components/models/index.ts"],
+			"@models/*": ["./src/components/models/*"]
 		},
 
 		/* Linting */
