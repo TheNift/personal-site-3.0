@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
 import { AnimatePresence, motion } from 'motion/react';
-import { useMemo } from 'react';
 import strings from '@data/strings';
 import AnimatedOutlet from '@components/AnimatedOutlet';
 import BackgroundScene from '@components/BackgroundScene';
