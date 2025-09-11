@@ -4,7 +4,17 @@ import { motion } from 'motion/react';
 import * as THREE from 'three';
 import { ShaderLayer } from '@components/ShaderLayer';
 import { bayer8x8Shader } from '@shaders';
-import { Motorcycle, Cube } from '@models';
+import {
+	Motorcycle,
+	Desk,
+	Monitor,
+	Chair,
+	Keyboard,
+	Mouse,
+	Plant,
+	Shelf,
+	Phone,
+} from '@models';
 import type { ModelHandle } from '@types';
 import { useBackground } from '@contexts/BackgroundContext';
 
@@ -14,18 +24,16 @@ function LightSource() {
 			<pointLight
 				color="white"
 				intensity={100}
-				position={[2, 2, 2]}
-				lookAt={[0, 0, 0]}
+				position={[5, 8, 5]}
 				castShadow={true}
 			/>
 			<pointLight
 				color="white"
-				intensity={30}
-				position={[-2, -2, 2]}
-				lookAt={[0, 0, 0]}
+				intensity={20}
+				position={[-3.8, 5, 4.2]}
 				castShadow={true}
 			/>
-			<ambientLight color="white" intensity={3} />
+			<ambientLight color="white" intensity={5} />
 		</>
 	);
 }
@@ -72,6 +80,9 @@ function CameraController({
 
 		camera.position.copy(currentPosition.current);
 		camera.lookAt(currentLookAt.current);
+		if (activeIndex === 4) {
+			camera.rotation.z = 0.9 * Math.PI;
+		}
 	});
 
 	return null;
@@ -100,29 +111,49 @@ const BackgroundScene = () => {
 		desk: useRef<ModelHandle>(null!),
 		motorcycle: useRef<ModelHandle>(null!),
 		computer: useRef<ModelHandle>(null!),
+		monitor: useRef<ModelHandle>(null!),
+		chair: useRef<ModelHandle>(null!),
+		keyboard: useRef<ModelHandle>(null!),
+		mouse: useRef<ModelHandle>(null!),
+		plant: useRef<ModelHandle>(null!),
+		shelf: useRef<ModelHandle>(null!),
+		phone: useRef<ModelHandle>(null!),
 	};
 
 	const cameraConfigs: CameraConfig[] = useMemo(
 		() => [
 			// Home - looking at desk area
 			{
-				position: new THREE.Vector3(0, 4, 0),
-				lookAt:
-					modelRefs.desk.current?.location ||
-					new THREE.Vector3(0, 0, 0),
+				position: new THREE.Vector3(0, 8, -5),
+				lookAt: new THREE.Vector3(0, 0, 6),
 			},
 			// About - looking at motorcycle
 			{
-				position: new THREE.Vector3(0, 4, 0),
+				position: new THREE.Vector3(0, 5, 0),
 				lookAt:
 					modelRefs.motorcycle.current?.location ||
 					new THREE.Vector3(0, 0, 0),
 			},
-			// Portfolio - looking at computer setup
+			// Experience - looking computer setup
 			{
-				position: new THREE.Vector3(0, 4, 0),
+				position: new THREE.Vector3(0, 5, -1),
 				lookAt:
-					modelRefs.computer.current?.location ||
+					modelRefs.monitor.current?.location ||
+					new THREE.Vector3(0, 0, 0),
+			},
+			// Portfolio - looking at shelf
+			{
+				position: new THREE.Vector3(-3, 6, 1),
+				lookAt:
+					modelRefs.shelf.current?.location.add(
+						new THREE.Vector3(0, 0.5, 0)
+					) || new THREE.Vector3(0, 0, 0),
+			},
+			// Contact - looking at phone
+			{
+				position: new THREE.Vector3(-1.1, 3.2, 3),
+				lookAt:
+					modelRefs.phone.current?.location ||
 					new THREE.Vector3(0, 0, 0),
 			},
 		],
@@ -157,20 +188,11 @@ const BackgroundScene = () => {
 					<SceneReadyDetector onReady={() => setIsSceneReady(true)} />
 					<LightSource />
 
-					{/* Home */}
-					<Cube
-						ref={modelRefs.desk}
-						position={[0, 0, 6]}
-						size={[1, 1, 1]}
-						color="green"
-						receiveShadow={true}
-						castShadow={true}
-					/>
-
 					{/* About */}
 					<Motorcycle
 						ref={modelRefs.motorcycle}
 						position={[8, 0, 3]}
+						rotation={[0, -0.1 * Math.PI, -0.05 * Math.PI]}
 						// onFrame={(mesh) => {
 						// 	mesh.rotation.y += 0.001;
 						// }}
@@ -178,15 +200,79 @@ const BackgroundScene = () => {
 					/>
 
 					{/* Portfolio */}
-					<Cube
+					<Desk
 						ref={modelRefs.computer}
-						position={[-5, 0, 3]}
-						size={[1, 1, 1]}
+						position={[-3.5, 0, 3.5]}
+						scale={[3, 3, 3]}
+						rotation={[0, 0.5 * Math.PI, 0]}
 						color="green"
 						receiveShadow={true}
 						castShadow={true}
 					/>
-
+					<Monitor
+						ref={modelRefs.monitor}
+						position={[-3.5, 2.85, 4.2]}
+						rotation={[0, 0.5 * Math.PI, 0]}
+						scale={[0.04, 0.04, 0.04]}
+						color="white"
+						receiveShadow={true}
+						castShadow={true}
+					/>
+					<Keyboard
+						ref={modelRefs.keyboard}
+						position={[-2.9, 2.85, 2.9]}
+						rotation={[0, -0.57 * Math.PI, 0]}
+						scale={[0.006, 0.006, 0.006]}
+						color="white"
+						receiveShadow={true}
+						castShadow={true}
+					/>
+					<Mouse
+						ref={modelRefs.mouse}
+						position={[-4.9, 2.85, 3.2]}
+						rotation={[0, 0.1 * Math.PI, 0]}
+						scale={[0.12, 0.12, 0.12]}
+						color="white"
+						receiveShadow={true}
+						castShadow={true}
+					/>
+					<Chair
+						ref={modelRefs.chair}
+						position={[-4, 0, 0]}
+						rotation={[0, 0.3 * Math.PI, 0]}
+						scale={[4, 4, 4]}
+						color="white"
+						receiveShadow={true}
+						castShadow={true}
+					/>
+					<Plant
+						ref={modelRefs.plant}
+						position={[-1, 3.85, 4]}
+						rotation={[0, 0 * Math.PI, 0]}
+						scale={[1, 1, 1]}
+						color="white"
+						receiveShadow={true}
+						castShadow={true}
+					/>
+					<Shelf
+						ref={modelRefs.shelf}
+						position={[-6, 5, 2.5]}
+						rotation={[0, 0 * Math.PI, 0]}
+						size={[1, 1, 1]}
+						scale={[1, 1, 1]}
+						color="white"
+						receiveShadow={true}
+						castShadow={true}
+					/>
+					<Phone
+						ref={modelRefs.phone}
+						position={[-1.1, 2.85, 3]}
+						rotation={[0.5 * Math.PI, 1 * Math.PI, -0.1 * Math.PI]}
+						scale={[0.8, 0.8, 0.8]}
+						color="white"
+						receiveShadow={true}
+						castShadow={true}
+					/>
 					<CameraController
 						cameraConfigs={cameraConfigs}
 						activeIndex={cameraPosition}

@@ -9,10 +9,18 @@ const strings = {
                 text: 'About',
                 to: '/about',
             },
+			{
+				text: 'Experience',
+				to: '/experience',
+			},
             {
                 text: 'Portfolio',
                 to: '/portfolio',
-            }
+            },
+			{
+				text: 'Contact',
+				to: '/contact',
+			},
         ],
 		loading: {
 			title: 'Welcome!',
