@@ -1,9 +1,10 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
+import { motion } from 'motion/react';
 import * as THREE from 'three';
 import { ShaderLayer } from '@components/ShaderLayer';
 import { bayer8x8Shader } from '@shaders';
-import { Cube } from '@models';
+import { Motorcycle } from '@models';
 import type { ModelHandle } from '@types';
 import { useBackground } from '@contexts/BackgroundContext';
 
@@ -64,14 +65,30 @@ function CameraController({
 	return null;
 }
 
+function SceneReadyDetector({ onReady }: { onReady: () => void }) {
+	const { gl } = useThree();
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			onReady();
+		}, 100);
+
+		return () => clearTimeout(timer);
+	}, [gl, onReady]);
+
+	return null;
+}
+
 const BackgroundScene = () => {
+	const [isSceneReady, setIsSceneReady] = useState(false);
+
 	const cameraPositions = [
-		new THREE.Vector3(0, 0, 5), // Front view
-		new THREE.Vector3(5, 0, 0), // Right view
-		new THREE.Vector3(0, 5, 0), // Top view
-		new THREE.Vector3(-5, 0, 0), // Left view
-		new THREE.Vector3(0, 0, -5), // Back view
-		new THREE.Vector3(3, 3, 3), // Diagonal view
+		new THREE.Vector3(8, 8, 8),
+		new THREE.Vector3(8, 0, 0),
+		new THREE.Vector3(0, 8, 0),
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, 0),
 	];
 
 	const { cameraPosition } = useBackground();
@@ -79,33 +96,48 @@ const BackgroundScene = () => {
 	const cubeRef = useRef<ModelHandle>(null!);
 
 	return (
-		<div style={{ width: '100%', height: '100%', position: 'relative' }}>
-			<Canvas
-				camera={{
-					position: cameraPositions[0].toArray(),
-					fov: 75,
-					near: 0.1,
-					far: 1000,
+		<div className="w-full h-full relative overflow-hidden">
+			<motion.div
+				initial={{ opacity: 0, x: 100 }}
+				animate={{
+					opacity: isSceneReady ? 1 : 0,
+					x: isSceneReady ? 0 : 100,
 				}}
+				transition={{ duration: 0.5, ease: 'easeInOut' }}
 				style={{ width: '100%', height: '100%' }}
 			>
-				<LightSource />
-				<Cube
-					ref={cubeRef}
-					color="green"
-					onFrame={(mesh) => {
-						mesh.rotation.x += 0.001;
-						mesh.rotation.y += 0.001;
+				<Canvas
+					camera={{
+						position: cameraPositions[0].toArray(),
+						fov: 75,
+						near: 0.1,
+						far: 1000,
 					}}
-					receiveShadow={true}
-				/>
-				<CameraController
-					positions={cameraPositions}
-					activeIndex={cameraPosition}
-					lookAtTarget={cubeRef.current}
-				/>
-				<ShaderLayer shader={bayer8x8Shader} />
-			</Canvas>
+					style={{ width: '100%', height: '100%' }}
+					gl={{
+						alpha: true,
+						antialias: true,
+					}}
+					// scene={{ background: new THREE.Color('#000000') }}
+				>
+					<SceneReadyDetector onReady={() => setIsSceneReady(true)} />
+					<LightSource />
+
+					<Motorcycle
+						ref={cubeRef}
+						onFrame={(mesh) => {
+							mesh.rotation.y += 0.001;
+						}}
+						receiveShadow={true}
+					/>
+					<CameraController
+						positions={cameraPositions}
+						activeIndex={cameraPosition}
+						lookAtTarget={cubeRef.current}
+					/>
+					<ShaderLayer shader={bayer8x8Shader} />
+				</Canvas>
+			</motion.div>
 		</div>
 	);
 };

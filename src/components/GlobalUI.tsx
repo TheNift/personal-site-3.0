@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
+import { useCallback, memo, useMemo } from 'react';
 import strings from '@data/strings';
 import AnimatedOutlet from '@components/AnimatedOutlet';
 import BackgroundScene from '@components/BackgroundScene';
@@ -17,18 +18,21 @@ function GlobalUI() {
 	);
 }
 
-function NavUI() {
-	const { setCameraPosition } = useBackground();
-	const LinkItem = ({
+const MemoizedLinkItem = memo(
+	({
 		to,
 		keyString,
 		title,
 		index,
+		onMouseEnter,
+		onMouseLeave,
 	}: {
 		to: string;
 		keyString: string;
 		title: string;
 		index?: number;
+		onMouseEnter: (index: number) => void;
+		onMouseLeave: () => void;
 	}) => {
 		const delay = index ? index * 0.1 : 0;
 		return (
@@ -44,29 +48,52 @@ function NavUI() {
 					to={to}
 					className="text-2xl font-bold btn w-full"
 					key={keyString}
-					onClick={() => {
-						setCameraPosition(index ?? 0);
+					onMouseEnter={() => {
+						onMouseEnter(index ?? 0);
+					}}
+					onMouseLeave={() => {
+						onMouseLeave();
 					}}
 				>
 					{title}
 				</Link>
 			</motion.div>
 		);
-	};
-	const navItems = strings.ui.nav.map((item, index) => (
-		<AnimatePresence
-			mode="wait"
-			propagate={true}
-			key={`nav-${item.text}-wrapper`}
-		>
-			<LinkItem
-				to={item.to}
-				keyString={item.text}
-				title={item.text}
-				index={index}
-			/>
-		</AnimatePresence>
-	));
+	}
+);
+
+MemoizedLinkItem.displayName = 'MemoizedLinkItem';
+
+function NavUI() {
+	const { setCameraPosition, currentPageIndex } = useBackground();
+
+	const handleMouseEnter = useCallback(
+		(index: number) => {
+			setCameraPosition(index);
+		},
+		[setCameraPosition]
+	);
+
+	const handleMouseLeave = useCallback(() => {
+		setCameraPosition(currentPageIndex);
+	}, [setCameraPosition, currentPageIndex]);
+
+	const navItems = useMemo(
+		() =>
+			strings.ui.nav.map((item, index) => (
+				<MemoizedLinkItem
+					key={`nav-${item.text}`}
+					to={item.to}
+					keyString={item.text}
+					title={item.text}
+					index={index}
+					onMouseEnter={handleMouseEnter}
+					onMouseLeave={handleMouseLeave}
+				/>
+			)),
+		[handleMouseEnter, handleMouseLeave]
+	);
+
 	return (
 		<div className="flex flex-col gap-2 absolute z-999 left-0 top-1/2 -translate-y-1/2">
 			{navItems}
@@ -76,7 +103,7 @@ function NavUI() {
 
 function BackgroundRender() {
 	return (
-		<div className="absolute inset-0 z-0 bg-yorha">
+		<div className="absolute inset-0 z-0 bg-yorha-dark">
 			<BackgroundScene />
 		</div>
 	);

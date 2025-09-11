@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router';
-import GlobalUI from '@components/GlobalUI';
+import LoadingHandler from '@components/LoadingHandler';
 import Home from '@pages/Home';
 import About from '@pages/About';
 import PortfolioHome from '@pages/PortfolioHome';
@@ -11,7 +11,7 @@ import NotFound from '@pages/404';
 const router = createBrowserRouter([
 	{
 		path: '/',
-		Component: GlobalUI,
+		Component: LoadingHandler,
 		children: [
 			{ index: true, Component: Home }, // Address: /
 			{ path: 'about', Component: About }, // Address: /about

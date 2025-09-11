@@ -14,6 +14,22 @@ const strings = {
                 to: '/portfolio',
             }
         ],
+		loading: {
+			title: 'Welcome!',
+			messages: [
+				'Unlocking front door...',
+				'Entering Jack\'s room...',
+				'Finishing up this league game...',
+				'Grabbing boba...',
+				'Thinking really hard...',
+				'Pushing to prod...',
+				'Oop sorry got distracted...',
+				'Locking in...',
+				'Finishing champ select...',
+				'Pressing a button...',
+				'Opening the oven...'
+			],
+		},
         projectReturnText: 'Portfolio',
 	},
 	colors: {
