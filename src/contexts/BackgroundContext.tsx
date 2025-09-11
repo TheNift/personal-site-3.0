@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
+import strings from '@data/strings';
 
 interface BackgroundContextType {
 	cameraPosition: number;
@@ -19,19 +20,28 @@ export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({
 	const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
 	useEffect(() => {
-		if (location.pathname === '/') {
-			setCurrentPageIndex(0);
-			setCameraPosition(0);
-		} else if (location.pathname === '/about') {
-			setCurrentPageIndex(1);
-			setCameraPosition(1);
-		} else if (
-			location.pathname === '/portfolio' ||
-			location.pathname.includes('/portfolio/')
-		) {
-			setCurrentPageIndex(2);
-			setCameraPosition(2);
+		const navItems = strings.ui.nav;
+		let matchedIndex = 0;
+
+		for (let i = 0; i < navItems.length; i++) {
+			const navItem = navItems[i];
+
+			if (location.pathname === navItem.to) {
+				matchedIndex = i;
+				break;
+			}
+
+			if (
+				navItem.to !== '/' &&
+				location.pathname.startsWith(navItem.to + '/')
+			) {
+				matchedIndex = i;
+				break;
+			}
 		}
+
+		setCurrentPageIndex(matchedIndex);
+		setCameraPosition(matchedIndex);
 	}, [location.pathname]);
 
 	return (
