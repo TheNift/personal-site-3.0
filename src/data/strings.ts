@@ -39,6 +39,8 @@ const strings = {
 			],
 		},
         projectReturnText: 'Portfolio',
+		siteTitle: 'Jack Kill',
+		siteDescription: 'Software Engineer @ Propaganda3',
 	},
 	colors: {
 		white: '#ffffff',
@@ -47,6 +49,7 @@ const strings = {
 		lightBlue: '#cce6ff',
 		yorha: '#d1cdb7',
 		yorhaDark: '#14130d',
+		siteBg: '#11100b',
 	},
 	home: {
 		title: 'Home',

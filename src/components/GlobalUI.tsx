@@ -103,7 +103,10 @@ function NavUI() {
 
 function BackgroundRender() {
 	return (
-		<div className="absolute inset-0 z-0 bg-yorha-dark">
+		<div
+			className="absolute inset-0 z-0"
+			style={{ backgroundColor: strings.colors.siteBg }}
+		>
 			<BackgroundScene />
 		</div>
 	);

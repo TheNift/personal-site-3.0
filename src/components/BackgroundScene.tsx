@@ -17,6 +17,7 @@ import {
 } from '@models';
 import type { ModelHandle } from '@types';
 import { useBackground } from '@contexts/BackgroundContext';
+import strings from '@data/strings';
 
 function LightSource() {
 	return (
@@ -125,7 +126,7 @@ const BackgroundScene = () => {
 			// Home - looking at desk area
 			{
 				position: new THREE.Vector3(0, 8, -5),
-				lookAt: new THREE.Vector3(0, 0, 6),
+				lookAt: new THREE.Vector3(1, 0, 6),
 			},
 			// About - looking at motorcycle
 			{
@@ -183,7 +184,9 @@ const BackgroundScene = () => {
 						alpha: true,
 						antialias: true,
 					}}
-					// scene={{ background: new THREE.Color('#000000') }}
+					scene={{
+						background: new THREE.Color(strings.colors.siteBg),
+					}}
 				>
 					<SceneReadyDetector onReady={() => setIsSceneReady(true)} />
 					<LightSource />

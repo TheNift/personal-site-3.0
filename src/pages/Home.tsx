@@ -1,9 +1,16 @@
 import Page from '@components/Page';
+import ScrambleText from '@components/ScrambleText';
+import strings from '@data/strings';
 
 function Home() {
 	return (
-		<Page className="flex flex-col items-center justify-center p-4">
-			<h1 className="text-3xl font-bold underline mb-4">Home</h1>
+		<Page className="flex flex-col items-center justify-start p-4 w-full h-full">
+			<h1 className="text-[100px] font-bold text-yorha">
+				<ScrambleText>{strings.ui.siteTitle}</ScrambleText>
+			</h1>
+			<p className="text-yorha/60 text-md font-medium">
+				<ScrambleText>{strings.ui.siteDescription}</ScrambleText>
+			</p>
 		</Page>
 	);
 }

@@ -6,6 +6,7 @@ export interface Bayer8x8ShaderUniforms {
 	intensity: { value: number };
 	colorA: { value: THREE.Vector3 };
 	colorB: { value: THREE.Vector3 };
+	maskColor: { value: THREE.Vector3 };
 	resolution: { value: THREE.Vector2 };
 }
 
@@ -14,6 +15,7 @@ export const createBayer8x8ShaderUniforms = () => ({
 	intensity: { value: 1.0 },
 	colorA: { value: new THREE.Color(strings.colors.yorha) },
 	colorB: { value: new THREE.Color(strings.colors.yorhaDark) },
+	maskColor: { value: new THREE.Color(strings.colors.siteBg) },
 	resolution: {
 		value: new THREE.Vector2(window.innerWidth, window.innerHeight),
 	},
@@ -33,6 +35,7 @@ export const bayer8x8FragmentShader = `
 	uniform float intensity;
 	uniform vec3 colorA;
 	uniform vec3 colorB;
+	uniform vec3 maskColor;
 	uniform vec2 resolution;
 	
 	varying vec2 vUv;
@@ -58,6 +61,17 @@ export const bayer8x8FragmentShader = `
 	
 	void main() {
 		vec4 texel = texture2D(tDiffuse, vUv);
+		
+		// Check if the color is close to the mask color (with tolerance for floating point precision)
+		vec3 colorDiff = abs(texel.rgb - maskColor);
+		float tolerance = 0.00001; // Adjust this value if needed
+		bool isMaskColor = all(lessThan(colorDiff, vec3(tolerance)));
+		
+		// If mask color, output transparent
+		if (isMaskColor) {
+			gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+			return;
+		}
 		
 		// Convert to grayscale using luminance formula
 		float luminance = dot(texel.rgb, vec3(0.299, 0.587, 0.114));
