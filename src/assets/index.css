@@ -5,11 +5,41 @@
 	--color-yorha-dark: #14130d;
 	--color-dark-blue: #1a1a4d;
 	--color-light-blue: #cce6ff;
+	--color-site-bg: #11100b;
+	--color-brown: #4e471e;
+	--color-miku-light: #86cecb;
+	--color-miku-dark: #137a7f;
 }
 
 @layer components {
 	.btn {
-		@apply px-4 py-2 bg-gray-200 hover:bg-gray-400 transition-colors duration-300 text-center;
+		@apply py-2 px-4 bg-yorha text-yorha-dark transition-all duration-300 text-center relative z-4 hover:cursor-pointer hover:bg-yorha/80;
+		transform: skewX(-15deg) translateX(-15px);
+		box-sizing: border-box;
+	}
+	.btn > * {
+		transform: skewX(15deg);
+	}
+
+	.menu-btn {
+		@apply py-2 bg-yorha text-yorha-dark transition-all duration-300 text-center relative z-4 my-1;
+		padding-left: 2rem;
+		padding-right: 3rem;
+		transform: skewX(-15deg) translateX(-15px);
+		box-sizing: border-box;
+	}
+	.menu-btn::before {
+		@apply absolute bg-transparent;
+		content: '';
+		top: -4px;
+		left: -4px;
+		right: -4px;
+		bottom: -4px;
+		z-index: -2;
+	}
+
+	.menu-btn > * {
+		transform: skewX(15deg);
 	}
 }
 

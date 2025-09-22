@@ -1,5 +1,5 @@
 import Page from '@components/Page';
-import GetProjects from '@utils/GetProjects';
+import useGetProjects from '@utils/GetProjects';
 import type { Project } from '@/types';
 import { Link } from 'react-router';
 
@@ -13,7 +13,7 @@ function PortfolioHome() {
 }
 
 function ProjectList() {
-	const projects = GetProjects();
+	const projects = useGetProjects();
 
 	return (
 		<div className="flex flex-col gap-4">

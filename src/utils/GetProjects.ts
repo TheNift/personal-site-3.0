@@ -1,6 +1,7 @@
-import strings from "@/data/strings";
+import { useLanguage } from '@contexts/LanguageContext';
 
-function GetProjects() {
+function useGetProjects() {
+	const { strings } = useLanguage();
 	return Object.entries(strings.projects).map(([key, value]) => {
 		return {
 			...value,
@@ -9,4 +10,4 @@ function GetProjects() {
 	});
 }
 
-export default GetProjects;
+export default useGetProjects;

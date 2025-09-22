@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import strings from '@data/strings';
+import { useLanguage } from '@contexts/LanguageContext';
 
 interface BackgroundContextType {
 	cameraPosition: number;
@@ -18,6 +18,7 @@ export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
 	const [cameraPosition, setCameraPosition] = useState(0);
 	const [currentPageIndex, setCurrentPageIndex] = useState(0);
+	const { strings } = useLanguage();
 
 	useEffect(() => {
 		const navItems = strings.ui.nav;
@@ -42,7 +43,7 @@ export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({
 
 		setCurrentPageIndex(matchedIndex);
 		setCameraPosition(matchedIndex);
-	}, [location.pathname]);
+	}, [location.pathname, strings.ui.nav]);
 
 	return (
 		<BackgroundContext.Provider

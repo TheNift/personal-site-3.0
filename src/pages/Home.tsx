@@ -1,8 +1,10 @@
 import Page from '@components/Page';
 import ScrambleText from '@components/ScrambleText';
-import strings from '@data/strings';
+import { useLanguage } from '@contexts/LanguageContext';
 
 function Home() {
+	const { strings } = useLanguage();
+
 	return (
 		<Page className="flex flex-col items-center justify-start p-4 w-full h-full">
 			<h1 className="text-[100px] font-bold text-yorha">

@@ -1,10 +1,11 @@
 import { Link, useParams } from 'react-router';
-import strings from '@data/strings';
+import { useLanguage } from '@contexts/LanguageContext';
 import NotFound from '@pages/404';
 import Page from '@components/Page';
 
 function Project() {
 	const { pid } = useParams();
+	const { strings } = useLanguage();
 
 	const projectData = Object.entries(strings.projects).find(
 		([, project]) => project.slug === pid

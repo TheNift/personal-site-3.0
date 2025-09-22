@@ -1,4 +1,4 @@
-const strings = {
+const english = {
     ui: {
 		nav: [
             {
@@ -41,6 +41,7 @@ const strings = {
         projectReturnText: 'Portfolio',
 		siteTitle: 'Jack Kill',
 		siteDescription: 'Software Engineer @ Propaganda3',
+		languageToggle: 'Tiếng Việt',
 	},
 	colors: {
 		white: '#ffffff',
@@ -50,6 +51,9 @@ const strings = {
 		yorha: '#d1cdb7',
 		yorhaDark: '#14130d',
 		siteBg: '#11100b',
+		complimentary: '#4e471e',
+		mikuLight: '#86cecb',
+		mikuDark: '#137a7f',
 	},
 	home: {
 		title: 'Home',
@@ -72,4 +76,83 @@ const strings = {
 	},
 };
 
-export default strings;
+const vietnamese = {
+    ui: {
+		nav: [
+            {
+                text: 'Trang chủ',
+                to: '/',
+            },
+            {
+                text: 'Giới thiệu',
+                to: '/about',
+            },
+			{
+				text: 'Kinh nghiệm',
+				to: '/experience',
+			},
+            {
+                text: 'Danh mục',
+                to: '/portfolio',
+            },
+			{
+				text: 'Liên hệ',
+				to: '/contact',
+			},
+        ],
+		loading: {
+			title: 'Chào mừng!',
+			messages: [
+				'Đang mở khóa cửa trước...',
+				'Đang vào phòng của Jack...',
+				'Đang hoàn thành game này...',
+				'Đang lấy trà sữa...',
+				'Đang suy nghĩ rất kỹ...',
+				'Đang đẩy code lên prod...',
+				'Ối xin lỗi bị phân tâm...',
+				'Đang tập trung...',
+				'Đang hoàn thành chọn tướng...',
+				'Đang nhấn một nút...',
+				'Đang mở lò nướng...'
+			],
+		},
+        projectReturnText: 'Danh mục',
+		siteTitle: 'Jack Kill',
+		siteDescription: 'Kỹ sư phần mềm @ Propaganda3',
+		languageToggle: 'English',
+	},
+	colors: {
+		white: '#ffffff',
+		black: '#000000',
+		darkBlue: '#1a1a4d',
+		lightBlue: '#cce6ff',
+		yorha: '#d1cdb7',
+		yorhaDark: '#14130d',
+		siteBg: '#11100b',
+		complimentary: '#4e471e',
+		mikuLight: '#86cecb',
+		mikuDark: '#137a7f',
+	},
+	home: {
+		title: 'Trang chủ',
+	},
+	about: {
+		title: 'Giới thiệu',
+	},
+	portfolio: {
+		title: 'Danh mục',
+	},
+	projects: {
+		campNelson: {
+			title: 'Camp Nelson',
+			slug: 'camp-nelson',
+		},
+		p3Valentine: {
+			title: 'P3 Valentine',
+			slug: 'p3-valentine',
+		},
+	},
+}
+
+export { english, vietnamese };
+export default english;

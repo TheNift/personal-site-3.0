@@ -1,4 +1,4 @@
-import strings from '@/data/strings';
+import { useLanguage } from '@contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { useMemo } from 'react';
 
@@ -7,6 +7,7 @@ interface LoadingScreenProps {
 }
 
 const LoadingScreen = ({ progress }: LoadingScreenProps) => {
+	const { strings } = useLanguage();
 	const messages = strings.ui.loading.messages;
 	const randomMessage = useMemo(
 		() => messages[Math.floor(Math.random() * messages.length)],

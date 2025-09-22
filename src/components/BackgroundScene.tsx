@@ -17,7 +17,7 @@ import {
 } from '@models';
 import type { ModelHandle } from '@types';
 import { useBackground } from '@contexts/BackgroundContext';
-import strings from '@data/strings';
+import { useLanguage } from '@contexts/LanguageContext';
 
 function LightSource() {
 	return (
@@ -107,6 +107,7 @@ const BackgroundScene = () => {
 	const [isSceneReady, setIsSceneReady] = useState(false);
 
 	const { cameraPosition } = useBackground();
+	const { strings } = useLanguage();
 
 	const modelRefs: ModelRefs = {
 		desk: useRef<ModelHandle>(null!),
