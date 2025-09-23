@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '@contexts/LanguageContext';
+import ScrambleText from './ScrambleText';
 
 const LanguageToggle: React.FC = () => {
 	const { language, setLanguage, strings } = useLanguage();
@@ -20,9 +21,11 @@ const LanguageToggle: React.FC = () => {
 			aria-label={`Switch to ${language === 'eng' ? 'Vietnamese' : 'English'}`}
 			title={`Current: ${language === 'eng' ? 'English' : 'Vietnamese'}`}
 		>
-			{language === 'eng'
-				? strings.ui.languageToggle
-				: strings.ui.languageToggle}
+			<ScrambleText speed={0.5} step={10} scramble={3}>
+				{language === 'eng'
+					? strings.ui.languageToggle
+					: strings.ui.languageToggle}
+			</ScrambleText>
 		</motion.button>
 	);
 };

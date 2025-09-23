@@ -24,7 +24,7 @@ function ScrambleText({
 		speed: speed ?? 0.5,
 		tick: tick ?? 5,
 		step: step ?? 5,
-		scramble: scramble ?? 5,
+		scramble: scramble ?? 2,
 	});
 
 	return <span ref={ref} className={className} style={style}></span>;

@@ -26,6 +26,7 @@ function Project() {
 }
 
 function ReturnButton() {
+	const { strings } = useLanguage();
 	return (
 		<Link to="/portfolio" className="absolute top-4 left-4 btn">
 			{strings.ui.projectReturnText}

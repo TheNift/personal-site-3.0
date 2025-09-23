@@ -21,9 +21,10 @@ const MemoizedLinkItem = memo(
 		onMouseEnter: (index: number) => void;
 		onMouseLeave: () => void;
 	}) => {
-		const delay = index ? index * 0.1 : 0;
+		const baseDelay = useMemo(() => (index ? index * 0.1 : 0), [index]);
 		const width = 300 - (index ?? 0) * 16;
 		const [isHovered, setIsHovered] = useState(false);
+		const [delay, setDelay] = useState(baseDelay);
 		const { currentPageIndex } = useBackground();
 		const isCurrent = useMemo(
 			() => index === currentPageIndex,
@@ -37,9 +38,16 @@ const MemoizedLinkItem = memo(
 					width: isHovered || isCurrent ? width + 20 : width,
 				}}
 				exit={{ opacity: 0, width: 0 }}
-				transition={{ duration: 0.1, ease: 'easeInOut', delay: delay }}
+				transition={{
+					duration: 0.1,
+					ease: 'easeInOut',
+					delay: delay,
+				}}
 				key={keyString}
 				className="flex items-center justify-center grow relative"
+				onAnimationComplete={() => {
+					setDelay(0);
+				}}
 			>
 				<Link
 					to={to}
@@ -55,8 +63,13 @@ const MemoizedLinkItem = memo(
 						e.currentTarget.classList.remove('selected');
 						setIsHovered(false);
 					}}
+					draggable={false}
 				>
-					<ScrambleText speed={0.5} step={10} scramble={10}>
+					<ScrambleText
+						speed={0.5}
+						step={10}
+						scramble={5 + (index ?? 0) * 2}
+					>
 						{title}
 					</ScrambleText>
 				</Link>
