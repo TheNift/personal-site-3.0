@@ -5,6 +5,7 @@ import About from '@pages/About';
 import PortfolioHome from '@pages/PortfolioHome';
 import Project from '@components/Project';
 import NotFound from '@pages/404';
+import Experience from '@/pages/Experience';
 
 // Documentation I'm using: https://reactrouter.com/start/data/routing
 
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, Component: Home }, // Address: /
 			{ path: 'about', Component: About }, // Address: /about
+			{ path: 'experience', Component: Experience }, // Address: /experience
 			{
 				path: 'portfolio',
 				children: [

@@ -27,7 +27,19 @@ function ScrambleText({
 		scramble: scramble ?? 2,
 	});
 
-	return <span ref={ref} className={className} style={style}></span>;
+	return (
+		<span
+			ref={ref}
+			className={className}
+			style={{
+				fontFamily: 'inherit',
+				fontSize: 'inherit',
+				fontStyle: 'inherit',
+				fontWeight: 'inherit',
+				...style,
+			}}
+		></span>
+	);
 }
 
 export default ScrambleText;
