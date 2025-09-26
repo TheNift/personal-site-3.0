@@ -1,7 +1,13 @@
-import { useRef, useImperativeHandle, forwardRef, useMemo } from 'react';
+import {
+	useRef,
+	useImperativeHandle,
+	forwardRef,
+	useMemo,
+	Suspense,
+} from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
-import * as THREE from 'three';
+import { Mesh, Group, Vector3 } from 'three';
 import type { BaseModelProps, ModelHandle } from '@types';
 
 export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
@@ -13,10 +19,12 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 			children,
 			onFrame,
 			gltfPath,
+			suspense = true,
+			fallback = null,
 		},
 		ref
 	) => {
-		const meshRef = useRef<THREE.Mesh | THREE.Group>(null!);
+		const meshRef = useRef<Mesh | Group>(null!);
 
 		const gltf = gltfPath ? useGLTF(gltfPath) : null;
 
@@ -25,7 +33,7 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 				try {
 					const cloned = gltf.scene.clone(true);
 					cloned.traverse((child) => {
-						if (child instanceof THREE.Mesh && child.material) {
+						if (child instanceof Mesh && child.material) {
 							if (Array.isArray(child.material)) {
 								child.material = child.material.map((mat) =>
 									mat.clone()
@@ -49,7 +57,7 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 				if (meshRef.current) {
 					return meshRef.current.position.clone();
 				}
-				return new THREE.Vector3(...position);
+				return new Vector3(...position);
 			},
 			get mesh() {
 				return meshRef.current;
@@ -65,29 +73,41 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 			}
 		});
 
-		if (gltfPath && clonedScene) {
+		const ModelContent = () => {
+			if (gltfPath && clonedScene) {
+				return (
+					<group
+						ref={meshRef}
+						position={position}
+						rotation={rotation}
+						scale={scale}
+					>
+						<primitive object={clonedScene} />
+					</group>
+				);
+			}
+
 			return (
-				<group
+				<mesh
 					ref={meshRef}
 					position={position}
 					rotation={rotation}
 					scale={scale}
 				>
-					<primitive object={clonedScene} />
-				</group>
+					{children}
+				</mesh>
+			);
+		};
+
+		if (suspense && gltfPath) {
+			return (
+				<Suspense fallback={fallback}>
+					<ModelContent />
+				</Suspense>
 			);
 		}
 
-		return (
-			<mesh
-				ref={meshRef}
-				position={position}
-				rotation={rotation}
-				scale={scale}
-			>
-				{children}
-			</mesh>
-		);
+		return <ModelContent />;
 	}
 );
 

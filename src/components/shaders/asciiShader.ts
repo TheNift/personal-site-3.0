@@ -1,12 +1,12 @@
-import * as THREE from 'three';
+import { Texture, Vector3, Vector2, Color } from 'three';
 import strings from '@data/strings';
 
 export interface AsciiShaderUniforms {
-	tDiffuse: { value: THREE.Texture | null };
+	tDiffuse: { value: Texture | null };
 	intensity: { value: number };
-	colorA: { value: THREE.Vector3 };
-	colorB: { value: THREE.Vector3 };
-	resolution: { value: THREE.Vector2 };
+	colorA: { value: Vector3 };
+	colorB: { value: Vector3 };
+	resolution: { value: Vector2 };
 	blockSize: { value: number };
 	useFullCharacterSet: { value: boolean };
 	blackWhiteMode: { value: boolean };
@@ -15,10 +15,10 @@ export interface AsciiShaderUniforms {
 export const createAsciiShaderUniforms = () => ({
 	tDiffuse: { value: null },
 	intensity: { value: 1.0 },
-	colorA: { value: new THREE.Color(strings.colors.yorhaDark) },
-	colorB: { value: new THREE.Color(strings.colors.yorha) },
+	colorA: { value: new Color(strings.colors.yorhaDark) },
+	colorB: { value: new Color(strings.colors.yorha) },
 	resolution: {
-		value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+		value: new Vector2(window.innerWidth, window.innerHeight),
 	},
 	blockSize: { value: 8.0 },
 	useFullCharacterSet: { value: false },

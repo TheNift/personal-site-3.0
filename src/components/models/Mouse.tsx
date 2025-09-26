@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { BaseModel } from './BaseModel';
 import type { CubeProps, ModelHandle } from '@types';
-import mouseFile from '@assets/models/mouse.glb';
+import { getAssetPath } from '@utils/assetRegistry';
 
 export const Mouse = forwardRef<ModelHandle, CubeProps>(
 	(
@@ -20,8 +20,8 @@ export const Mouse = forwardRef<ModelHandle, CubeProps>(
 				ref={ref}
 				onFrame={onFrame}
 				{...baseProps}
-				gltfPath={mouseFile}
-			></BaseModel>
+				gltfPath={getAssetPath('mouse')}
+			/>
 		);
 	}
 );

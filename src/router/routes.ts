@@ -1,11 +1,14 @@
 import { createBrowserRouter } from 'react-router';
 import LoadingHandler from '@components/LoadingHandler';
-import Home from '@pages/Home';
-import About from '@pages/About';
-import PortfolioHome from '@pages/PortfolioHome';
-import Project from '@components/Project';
-import NotFound from '@pages/404';
-import Experience from '@/pages/Experience';
+import { lazy } from 'react';
+import Home from '@pages/Home'; // Intentionally not lazy loading this one! It's the first page, so not lazy loading improved LCP
+
+// const Home = lazy(() => import('@pages/Home'));
+const About = lazy(() => import('@pages/About'));
+const PortfolioHome = lazy(() => import('@pages/PortfolioHome'));
+const Project = lazy(() => import('@components/Project'));
+const NotFound = lazy(() => import('@pages/404'));
+const Experience = lazy(() => import('@/pages/Experience'));
 
 // Documentation I'm using: https://reactrouter.com/start/data/routing
 

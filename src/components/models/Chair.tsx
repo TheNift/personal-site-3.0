@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { BaseModel } from './BaseModel';
 import type { CubeProps, ModelHandle } from '@types';
-import chairFile from '@assets/models/chair.glb';
+import { getAssetPath } from '@utils/assetRegistry';
 
 export const Chair = forwardRef<ModelHandle, CubeProps>(
 	(
@@ -20,8 +20,8 @@ export const Chair = forwardRef<ModelHandle, CubeProps>(
 				ref={ref}
 				onFrame={onFrame}
 				{...baseProps}
-				gltfPath={chairFile}
-			></BaseModel>
+				gltfPath={getAssetPath('chair')}
+			/>
 		);
 	}
 );

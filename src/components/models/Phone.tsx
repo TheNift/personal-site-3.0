@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { BaseModel } from './BaseModel';
 import type { CubeProps, ModelHandle } from '@types';
-import phoneFile from '@assets/models/phone.glb';
+import { getAssetPath } from '@utils/assetRegistry';
 
 export const Phone = forwardRef<ModelHandle, CubeProps>(
 	(
@@ -20,8 +20,8 @@ export const Phone = forwardRef<ModelHandle, CubeProps>(
 				ref={ref}
 				onFrame={onFrame}
 				{...baseProps}
-				gltfPath={phoneFile}
-			></BaseModel>
+				gltfPath={getAssetPath('phone')}
+			/>
 		);
 	}
 );

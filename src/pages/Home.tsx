@@ -1,13 +1,23 @@
 import Page from '@components/Page';
 import ScrambleText from '@components/ScrambleText';
 import { useLanguage } from '@contexts/LanguageContext';
+import { Suspense } from 'react';
 
-function Home() {
+const StaticContent = () => (
+	<>
+		<h1 className="text-[100px] text-yorha font-doto tracking-tighter font-bold">
+			Jack Kill
+		</h1>
+		<p className="text-yorha/60 text-md font-medium">Sofware Engineer</p>
+	</>
+);
+
+const DynamicContent = () => {
 	const { strings } = useLanguage();
 
 	return (
-		<Page className="flex flex-col items-center justify-start p-4 w-full h-full">
-			<h1 className="text-[100px] font-bold text-yorha font-doto">
+		<>
+			<h1 className="text-[100px] text-yorha font-doto tracking-tighter font-bold">
 				<ScrambleText scramble={8}>{strings.ui.siteTitle}</ScrambleText>
 			</h1>
 			<p className="text-yorha/60 text-md font-medium">
@@ -15,6 +25,16 @@ function Home() {
 					{strings.ui.siteDescription}
 				</ScrambleText>
 			</p>
+		</>
+	);
+};
+
+function Home() {
+	return (
+		<Page className="flex flex-col items-center justify-start p-4 w-full h-full">
+			<Suspense fallback={<StaticContent />}>
+				<DynamicContent />
+			</Suspense>
 		</Page>
 	);
 }

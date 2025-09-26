@@ -1,11 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import {visualizer} from 'rollup-plugin-visualizer'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), visualizer()],
   assetsInclude: ['**/*.glb', '**/*.gltf', '**/*.obj'],
+  optimizeDeps: {
+    include: ['three', '@react-three/fiber', '@react-three/drei'],
+    exclude: ['three/examples'],
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -21,5 +26,18 @@ export default defineConfig({
       '@shaders': path.resolve(__dirname, './src/components/shaders/index.ts'),
       '@models': path.resolve(__dirname, './src/components/models/index.ts'),
     },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Core React libraries
+          'react-vendor': ['react', 'react-dom', 'react-router'],
+          // Three.js and related libraries
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1200, // raising this because ThreeJS is really hard to get smaller
   },
 })

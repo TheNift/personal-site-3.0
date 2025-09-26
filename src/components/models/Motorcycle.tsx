@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { BaseModel } from './BaseModel';
 import type { CubeProps, ModelHandle } from '@types';
-import motorcycleGltf from '@assets/models/sv650.glb';
+import { getAssetPath } from '@utils/assetRegistry';
 
 export const Motorcycle = forwardRef<ModelHandle, CubeProps>(
 	(
@@ -20,8 +20,8 @@ export const Motorcycle = forwardRef<ModelHandle, CubeProps>(
 				ref={ref}
 				onFrame={onFrame}
 				{...baseProps}
-				gltfPath={motorcycleGltf}
-			></BaseModel>
+				gltfPath={getAssetPath('motorcycle')}
+			/>
 		);
 	}
 );

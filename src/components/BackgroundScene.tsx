@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, useMemo } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { motion } from 'motion/react';
-import * as THREE from 'three';
+import { Vector3, Color } from 'three';
 import { ShaderLayer } from '@components/ShaderLayer';
 import { bayer8x8Shader } from '@shaders';
 import {
@@ -40,8 +40,8 @@ function LightSource() {
 }
 
 interface CameraConfig {
-	position: THREE.Vector3;
-	lookAt: THREE.Vector3;
+	position: Vector3;
+	lookAt: Vector3;
 }
 
 interface ModelRefs {
@@ -56,10 +56,10 @@ function CameraController({
 	activeIndex: number;
 }) {
 	const { camera } = useThree();
-	const targetPosition = useRef(new THREE.Vector3());
-	const currentPosition = useRef(new THREE.Vector3());
-	const targetLookAt = useRef(new THREE.Vector3());
-	const currentLookAt = useRef(new THREE.Vector3());
+	const targetPosition = useRef(new Vector3());
+	const currentPosition = useRef(new Vector3());
+	const targetLookAt = useRef(new Vector3());
+	const currentLookAt = useRef(new Vector3());
 	const isInitialized = useRef(false);
 
 	useEffect(() => {
@@ -126,37 +126,35 @@ const BackgroundScene = () => {
 		() => [
 			// Home - looking at desk area
 			{
-				position: new THREE.Vector3(0, 8, -5),
-				lookAt: new THREE.Vector3(1, 0, 6),
+				position: new Vector3(0, 8, -5),
+				lookAt: new Vector3(1, 0, 6),
 			},
 			// About - looking at motorcycle
 			{
-				position: new THREE.Vector3(0, 5, 0),
+				position: new Vector3(0, 5, 0),
 				lookAt:
 					modelRefs.motorcycle.current?.location ||
-					new THREE.Vector3(0, 0, 0),
+					new Vector3(0, 0, 0),
 			},
 			// Experience - looking computer setup
 			{
-				position: new THREE.Vector3(0, 5, -1),
+				position: new Vector3(0, 5, -1),
 				lookAt:
-					modelRefs.monitor.current?.location ||
-					new THREE.Vector3(0, 0, 0),
+					modelRefs.monitor.current?.location || new Vector3(0, 0, 0),
 			},
 			// Portfolio - looking at shelf
 			{
-				position: new THREE.Vector3(-3, 6, 1),
+				position: new Vector3(-3, 6, 1),
 				lookAt:
 					modelRefs.shelf.current?.location.add(
-						new THREE.Vector3(0, 0.5, 0)
-					) || new THREE.Vector3(0, 0, 0),
+						new Vector3(0, 0.5, 0)
+					) || new Vector3(0, 0, 0),
 			},
 			// Contact - looking at phone
 			{
-				position: new THREE.Vector3(-1.1, 3.2, 3),
+				position: new Vector3(-1.1, 3.2, 3),
 				lookAt:
-					modelRefs.phone.current?.location ||
-					new THREE.Vector3(0, 0, 0),
+					modelRefs.phone.current?.location || new Vector3(0, 0, 0),
 			},
 		],
 		[modelRefs]
@@ -186,7 +184,7 @@ const BackgroundScene = () => {
 						antialias: true,
 					}}
 					scene={{
-						background: new THREE.Color(strings.colors.siteBg),
+						background: new Color(strings.colors.siteBg),
 					}}
 				>
 					<SceneReadyDetector onReady={() => setIsSceneReady(true)} />
@@ -201,6 +199,7 @@ const BackgroundScene = () => {
 						// 	mesh.rotation.y += 0.001;
 						// }}
 						receiveShadow={true}
+						suspense={true}
 					/>
 
 					{/* Portfolio */}
@@ -212,6 +211,7 @@ const BackgroundScene = () => {
 						color="green"
 						receiveShadow={true}
 						castShadow={true}
+						suspense={true}
 					/>
 					<Monitor
 						ref={modelRefs.monitor}
@@ -221,6 +221,7 @@ const BackgroundScene = () => {
 						color="white"
 						receiveShadow={true}
 						castShadow={true}
+						suspense={true}
 					/>
 					<Keyboard
 						ref={modelRefs.keyboard}
@@ -230,6 +231,7 @@ const BackgroundScene = () => {
 						color="white"
 						receiveShadow={true}
 						castShadow={true}
+						suspense={true}
 					/>
 					<Mouse
 						ref={modelRefs.mouse}
@@ -239,6 +241,7 @@ const BackgroundScene = () => {
 						color="white"
 						receiveShadow={true}
 						castShadow={true}
+						suspense={true}
 					/>
 					<Chair
 						ref={modelRefs.chair}
@@ -248,6 +251,7 @@ const BackgroundScene = () => {
 						color="white"
 						receiveShadow={true}
 						castShadow={true}
+						suspense={true}
 					/>
 					<Plant
 						ref={modelRefs.plant}
@@ -257,6 +261,7 @@ const BackgroundScene = () => {
 						color="white"
 						receiveShadow={true}
 						castShadow={true}
+						suspense={true}
 					/>
 					<Shelf
 						ref={modelRefs.shelf}
@@ -267,6 +272,7 @@ const BackgroundScene = () => {
 						color="white"
 						receiveShadow={true}
 						castShadow={true}
+						suspense={true}
 					/>
 					<Phone
 						ref={modelRefs.phone}
@@ -276,6 +282,7 @@ const BackgroundScene = () => {
 						color="white"
 						receiveShadow={true}
 						castShadow={true}
+						suspense={true}
 					/>
 					<CameraController
 						cameraConfigs={cameraConfigs}

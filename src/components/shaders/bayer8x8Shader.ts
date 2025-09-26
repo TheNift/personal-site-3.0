@@ -1,23 +1,23 @@
-import * as THREE from 'three';
+import { Texture, Vector3, Vector2, Color } from 'three';
 import strings from '@data/strings';
 
 export interface Bayer8x8ShaderUniforms {
-	tDiffuse: { value: THREE.Texture | null };
+	tDiffuse: { value: Texture | null };
 	intensity: { value: number };
-	colorA: { value: THREE.Vector3 };
-	colorB: { value: THREE.Vector3 };
-	maskColor: { value: THREE.Vector3 };
-	resolution: { value: THREE.Vector2 };
+	colorA: { value: Vector3 };
+	colorB: { value: Vector3 };
+	maskColor: { value: Vector3 };
+	resolution: { value: Vector2 };
 }
 
 export const createBayer8x8ShaderUniforms = () => ({
 	tDiffuse: { value: null },
 	intensity: { value: 1.0 },
-	colorA: { value: new THREE.Color(strings.colors.yorha) },
-	colorB: { value: new THREE.Color(strings.colors.yorhaDark) },
-	maskColor: { value: new THREE.Color(strings.colors.siteBg) },
+	colorA: { value: new Color(strings.colors.yorha) },
+	colorB: { value: new Color(strings.colors.yorhaDark) },
+	maskColor: { value: new Color(strings.colors.siteBg) },
 	resolution: {
-		value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+		value: new Vector2(window.innerWidth, window.innerHeight),
 	},
 });
 

@@ -19,10 +19,41 @@ function Experience() {
 					<h1 className="text-3xl font-bold underline mb-4">
 						<ScrambleText>{strings.experience.title}</ScrambleText>
 					</h1>
+					<ExperienceItems />
 				</div>
 				<BackgroundPages amount={3} />
 			</motion.div>
 		</Page>
+	);
+}
+
+function ExperienceItems() {
+	const { strings } = useLanguage();
+	return (
+		<>
+			{strings.experience.items.map((item, index) => (
+				<ExperienceItem key={index} item={item} />
+			))}
+		</>
+	);
+}
+function ExperienceItem({ item }: { item: any }) {
+	return (
+		<div className="flex flex-col justify-start align-start not-last:mb-4">
+			<h2 className="text-xl font-doto font-bold">{item.company}</h2>
+			<div className="flex flex-row justify-between align-center">
+				<h3>{item.role}</h3>
+				<div className="flex flex-col justify-end align-center">
+					<p>{item.date}</p>
+					<p>{item.location}</p>
+				</div>
+				<ul className="list-disc list-inside">
+					{item.lines.map((line: string, index: number) => (
+						<li key={index}>{line}</li>
+					))}
+				</ul>
+			</div>
+		</div>
 	);
 }
 

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { BaseModel } from './BaseModel';
 import type { CubeProps, ModelHandle } from '@types';
-import keyboardFile from '@assets/models/keyboard.glb';
+import { getAssetPath } from '@utils/assetRegistry';
 
 export const Keyboard = forwardRef<ModelHandle, CubeProps>(
 	(
@@ -20,8 +20,8 @@ export const Keyboard = forwardRef<ModelHandle, CubeProps>(
 				ref={ref}
 				onFrame={onFrame}
 				{...baseProps}
-				gltfPath={keyboardFile}
-			></BaseModel>
+				gltfPath={getAssetPath('keyboard')}
+			/>
 		);
 	}
 );

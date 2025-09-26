@@ -193,6 +193,55 @@ const vietnamese = {
 	},
 	experience: {
 		title: 'Kinh nghiệm',
+		items: [
+			{
+				company: 'Propaganda3',
+				role: 'Kỹ sư phần mềm',
+				date: 'Tháng 7, 2024 - Hiện tại',
+				location: 'Overland Park, KS',
+				lines: [
+					'Phát triển và triển khai các ứng dụng web và di động hiệu suất cao sử dụng React và React-Native thông qua Vite, Next.js, hoặc Expo, phục vụ hàng trăm nghìn người dùng trên nhiều ngành khác nhau.',
+					'Thực hiện phát triển chu kỳ đầy đủ của nhiều dự án trong một nhóm agile nhỏ, từ lập kế hoạch đến triển khai.',
+					'Tạo và tối ưu hóa các trang web và ứng dụng thương mại điện tử sử dụng Shopify API + Liquid, đóng góp vào các trang web tạo ra hơn $100k doanh thu hàng tháng.',
+					'Thiết kế backend có thể mở rộng sử dụng MongoDB, PHP, và NodeJS, hỗ trợ các ứng dụng có hàng nghìn người dùng.'
+				],
+			},
+			{
+				company: 'Bệnh viện New York Presbyterian',
+				role: 'Thực tập sinh Công nghệ',
+				date: 'Tháng 7, 2023 - Tháng 8, 2023',
+				location: 'New York, NY',
+				lines: [
+					'Hỗ trợ một nhóm các Chuyên viên phân tích IT trong việc cung cấp hỗ trợ cho nhân viên bệnh viện và cài đặt & cấu hình các hệ thống bệnh viện mới.',
+					'Thể hiện khả năng giải quyết vấn đề mạnh mẽ trong việc giải quyết các vấn đề IT phức tạp liên quan đến cả phần mềm và phần cứng.',
+					'Tham gia và đóng góp vào các cuộc họp nhân viên liên quan đến lập kế hoạch hệ thống, tối ưu hóa khối lượng công việc, và tích hợp machine learning.',
+					'Học hỏi về triển khai công nghệ quy mô lớn, triển khai & tích hợp mạng, và quản lý hệ thống.'
+				],
+			},
+			{
+				company: 'Propaganda3',
+				role: 'Thực tập sinh Kỹ sư phần mềm',
+				date: 'Tháng 7, 2022 - Tháng 1, 2024',
+				location: 'Overland Park, KS',
+				lines: [
+					'Hợp tác với một nhóm các nhà phát triển để tạo ra các ứng dụng & trang web khách hàng, cũng như các script bảo trì tự động & test case.',
+					'Có được kinh nghiệm thực tế với các phương pháp SaaS và Agile Production trong một môi trường học tập chủ động dựa trên nhóm năng động.',
+					'Có được hiểu biết sâu hơn về quản lý dự án bằng cách quan sát các dự án tiếp cận hàng chục nghìn người dùng cuối từ khái niệm hóa đến phát hành đầu tiên, trong khi xem xét các yếu tố khác nhau như hiệu suất, hiệu quả, và tuân thủ ADA.',
+					'Các công cụ được sử dụng bao gồm JavaScript, TypeScript, React-Native, Expo, Python, Selenium, PHP, AWS, và codebase WPO của Propaganda3.'
+				],
+			},
+			{
+				company: 'KU SELF Fellowship',
+				role: 'Fellow',
+				date: 'Tháng 8, 2019 - Tháng 5, 2024',
+				location: 'Lawrence, KS',
+				lines: [
+					'Rèn luyện các kỹ năng kỹ thuật, lãnh đạo, và kinh doanh cùng với các sinh viên kỹ thuật KU uy tín khác.',
+					'Đảm nhận trách nhiệm trong fellowship, bao gồm tổ chức sự kiện, quản lý dự án, và cố vấn cho các khóa trẻ hơn.',
+					'Làm việc với các doanh nghiệp nhỏ và tổ chức phi lợi nhuận trong các dự án và sáng kiến dài hạn.'
+				],
+			},
+		]
 	},
 	portfolio: {
 		title: 'Danh mục',

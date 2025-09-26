@@ -1,38 +1,34 @@
 import { useState, useEffect } from 'react';
 import GlobalUI from '@components/GlobalUI';
-import LoadingScreen from '@components/LoadingScreen';
 
 const LoadingHandler = () => {
-	const [isLoading, setIsLoading] = useState(true);
+	const [isAssetsLoading, setIsAssetsLoading] = useState(true);
 	const [loadingProgress, setLoadingProgress] = useState(0);
 
 	useEffect(() => {
 		const loadScene = async () => {
 			try {
-				await new Promise((resolve) => setTimeout(resolve, 100));
-				setLoadingProgress(20);
+				setLoadingProgress(10);
 
-				await import('@components/BackgroundScene');
-				setLoadingProgress(30);
+				import('@components/BackgroundScene').then(() => {
+					setLoadingProgress(20);
 
-				const { preloadThreeJSAssets } = await import(
-					'@utils/sceneLoader'
-				);
-				setLoadingProgress(40);
+					import('@utils/sceneLoader').then(
+						({ preloadThreeJSAssets }) => {
+							setLoadingProgress(30);
 
-				await preloadThreeJSAssets((progress) => {
-					setLoadingProgress(40 + progress * 50);
+							preloadThreeJSAssets((progress) => {
+								setLoadingProgress(30 + (progress * 70) / 100);
+							}).finally(() => {
+								setIsAssetsLoading(false);
+							});
+						}
+					);
 				});
-
-				setLoadingProgress(100);
-
-				await new Promise((resolve) => setTimeout(resolve, 300));
-
-				setIsLoading(false);
 			} catch (error) {
 				console.error('Error loading 3D scene:', error);
 				setLoadingProgress(100);
-				setTimeout(() => setIsLoading(false), 500);
+				setIsAssetsLoading(false);
 			}
 		};
 
@@ -43,11 +39,14 @@ const LoadingHandler = () => {
 		}
 	}, []);
 
-	if (isLoading) {
-		return <LoadingScreen progress={loadingProgress} />;
-	}
-
-	return <GlobalUI />;
+	return (
+		<>
+			<GlobalUI
+				showLoadingModal={isAssetsLoading}
+				loadingProgress={loadingProgress}
+			/>
+		</>
+	);
 };
 
 export default LoadingHandler;

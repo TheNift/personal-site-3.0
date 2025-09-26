@@ -38,7 +38,9 @@ function ScrambleText({
 				fontWeight: 'inherit',
 				...style,
 			}}
-		></span>
+		>
+			{String(children)}
+		</span>
 	);
 }
 

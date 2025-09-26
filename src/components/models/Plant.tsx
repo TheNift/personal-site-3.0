@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { BaseModel } from './BaseModel';
 import type { CubeProps, ModelHandle } from '@types';
-import plantFile from '@assets/models/plant.glb';
+import { getAssetPath } from '@utils/assetRegistry';
 
 export const Plant = forwardRef<ModelHandle, CubeProps>(
 	(
@@ -20,8 +20,8 @@ export const Plant = forwardRef<ModelHandle, CubeProps>(
 				ref={ref}
 				onFrame={onFrame}
 				{...baseProps}
-				gltfPath={plantFile}
-			></BaseModel>
+				gltfPath={getAssetPath('plant')}
+			/>
 		);
 	}
 );

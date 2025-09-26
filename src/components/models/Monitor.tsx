@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { BaseModel } from './BaseModel';
 import type { CubeProps, ModelHandle } from '@types';
-import monitorFile from '@assets/models/monitor.glb';
+import { getAssetPath } from '@utils/assetRegistry';
 
 export const Monitor = forwardRef<ModelHandle, CubeProps>(
 	(
@@ -20,8 +20,8 @@ export const Monitor = forwardRef<ModelHandle, CubeProps>(
 				ref={ref}
 				onFrame={onFrame}
 				{...baseProps}
-				gltfPath={monitorFile}
-			></BaseModel>
+				gltfPath={getAssetPath('monitor')}
+			/>
 		);
 	}
 );
