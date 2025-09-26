@@ -2,15 +2,19 @@ import { useLanguage } from '@contexts/LanguageContext';
 import Page from '@components/Page';
 import { motion } from 'motion/react';
 import ScrambleText from '@components/ScrambleText';
+import { useUI } from '@/contexts/UIContext';
 
 function Experience() {
 	const { strings } = useLanguage();
-
+	const { isContentHidden } = useUI();
 	return (
 		<Page className="flex flex-col items-center justify-center p-4">
 			<motion.div
 				initial={{ opacity: 0, x: 100 }}
-				animate={{ opacity: 1, x: 0 }}
+				animate={{
+					opacity: isContentHidden ? 0 : 1,
+					x: 0,
+				}}
 				exit={{ opacity: 0, x: -100 }}
 				transition={{ duration: 0.3, ease: 'easeInOut' }}
 				className="relative my-[50px] h-full"
@@ -38,21 +42,26 @@ function ExperienceItems() {
 	);
 }
 function ExperienceItem({ item }: { item: any }) {
+	const { language } = useLanguage();
 	return (
-		<div className="flex flex-col justify-start align-start not-last:mb-4">
-			<h2 className="text-xl font-doto font-bold">{item.company}</h2>
-			<div className="flex flex-row justify-between align-center">
-				<h3>{item.role}</h3>
-				<div className="flex flex-col justify-end align-center">
+		<div className="flex flex-col justify-start align-start not-last:mb-[50px]">
+			<h2
+				className={`text-2xl ${language === 'eng' ? 'font-doto font-[900]' : 'font-inter font-semibold'}`}
+			>
+				{item.company}
+			</h2>
+			<div className="flex flex-row justify-between align-center border-b border-yorha-dark/50 pb-2 mb-2">
+				<h3 className="text-md">{item.role}</h3>
+				<div className="flex flex-col justify-end align-center text-sm">
 					<p>{item.date}</p>
 					<p>{item.location}</p>
 				</div>
-				<ul className="list-disc list-inside">
-					{item.lines.map((line: string, index: number) => (
-						<li key={index}>{line}</li>
-					))}
-				</ul>
 			</div>
+			<ul className="list-disc list-inside text-sm">
+				{item.lines.map((line: string, index: number) => (
+					<li key={index}>{line}</li>
+				))}
+			</ul>
 		</div>
 	);
 }
