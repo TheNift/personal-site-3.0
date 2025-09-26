@@ -68,8 +68,12 @@ function CameraController({
 			targetLookAt.current.copy(cameraConfigs[activeIndex].lookAt);
 
 			if (!isInitialized.current) {
-				currentPosition.current.copy(camera.position);
+				currentPosition.current.copy(
+					cameraConfigs[activeIndex].position
+				);
 				currentLookAt.current.copy(cameraConfigs[activeIndex].lookAt);
+				camera.position.copy(cameraConfigs[activeIndex].position);
+				camera.lookAt(cameraConfigs[activeIndex].lookAt);
 				isInitialized.current = true;
 			}
 		}
@@ -93,11 +97,7 @@ function SceneReadyDetector({ onReady }: { onReady: () => void }) {
 	const { gl } = useThree();
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			onReady();
-		}, 100);
-
-		return () => clearTimeout(timer);
+		onReady();
 	}, [gl, onReady]);
 
 	return null;
@@ -105,9 +105,18 @@ function SceneReadyDetector({ onReady }: { onReady: () => void }) {
 
 const BackgroundScene = () => {
 	const [isSceneReady, setIsSceneReady] = useState(false);
+	const [isFullyLoaded, setIsFullyLoaded] = useState(false);
 
-	const { cameraPosition } = useBackground();
+	const { cameraPosition, isAssetsLoading } = useBackground();
 	const { strings } = useLanguage();
+
+	useEffect(() => {
+		if (!isAssetsLoading && isSceneReady) {
+			setIsFullyLoaded(true);
+		} else {
+			setIsFullyLoaded(false);
+		}
+	}, [isAssetsLoading, isSceneReady]);
 
 	const modelRefs: ModelRefs = {
 		desk: useRef<ModelHandle>(null!),
@@ -163,22 +172,31 @@ const BackgroundScene = () => {
 	return (
 		<div className="w-full h-full relative overflow-hidden">
 			<motion.div
-				initial={{ opacity: 0, x: 100 }}
+				initial={{ opacity: 0, scale: 0.95 }}
 				animate={{
-					opacity: isSceneReady ? 1 : 0,
-					x: isSceneReady ? 0 : 100,
+					opacity: isFullyLoaded ? 1 : 0,
+					scale: isFullyLoaded ? 1 : 0.95,
 				}}
-				transition={{ duration: 0.5, ease: 'easeInOut' }}
+				exit={{ opacity: 0, scale: 0.95 }}
+				transition={{
+					duration: 0.5,
+					ease: 'easeInOut',
+					delay: isFullyLoaded ? 0.1 : 0,
+				}}
 				style={{ width: '100%', height: '100%' }}
 			>
 				<Canvas
 					camera={{
-						position: cameraConfigs[0].position.toArray(),
+						position:
+							cameraConfigs[cameraPosition].position.toArray(),
 						fov: 75,
 						near: 0.1,
 						far: 1000,
 					}}
-					style={{ width: '100%', height: '100%' }}
+					style={{
+						width: '100%',
+						height: '100%',
+					}}
 					gl={{
 						alpha: true,
 						antialias: true,

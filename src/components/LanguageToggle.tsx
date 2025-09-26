@@ -15,9 +15,17 @@ const LanguageToggle: React.FC = () => {
 			onClick={toggleLanguage}
 			ariaLabel={`Switch to ${language === 'eng' ? 'Vietnamese' : 'English'}`}
 			title={`Current: ${language === 'eng' ? 'English' : 'Vietnamese'}`}
-			delay={0.5}
+			className="transition-all duration-300 ease-in-out flex items-center justify-center"
+			style={{
+				width: language === 'eng' ? '130px' : '110px',
+			}}
 		>
-			<ScrambleText speed={0.5} step={10} scramble={3}>
+			<ScrambleText
+				speed={0.5}
+				step={10}
+				scramble={3}
+				className="text-nowrap w-full text-center"
+			>
 				{language === 'eng'
 					? strings.ui.languageToggle
 					: strings.ui.languageToggle}

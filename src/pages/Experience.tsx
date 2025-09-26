@@ -12,7 +12,7 @@ function Experience() {
 				initial={{ opacity: 0, x: 100 }}
 				animate={{ opacity: 1, x: 0 }}
 				exit={{ opacity: 0, x: -100 }}
-				transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.3 }}
+				transition={{ duration: 0.3, ease: 'easeInOut' }}
 				className="relative my-[50px] h-full"
 			>
 				<div className="h-full w-full z-5 flex flex-col items-center justify-start aspect-[8.5/11] p-4 bg-yorha relative drop-shadow-lg overflow-y-scroll">
@@ -74,7 +74,7 @@ function BackgroundPage({ index }: { index: number }) {
 			animate={{ opacity: 1, x: 0, rotate: -5 * (index + 1) }}
 			exit={{ opacity: 0, x: -100 }}
 			transition={{
-				duration: 0.5,
+				duration: 0.3,
 				ease: 'easeInOut',
 				delay: index * 0.1 + 0.1,
 			}}

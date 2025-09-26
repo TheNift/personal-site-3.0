@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import GlobalUI from '@components/GlobalUI';
+import { useBackground } from '@contexts/BackgroundContext';
 
 const LoadingHandler = () => {
-	const [isAssetsLoading, setIsAssetsLoading] = useState(true);
-	const [loadingProgress, setLoadingProgress] = useState(0);
-
+	const { setIsAssetsLoading, setLoadingProgress } = useBackground();
 	useEffect(() => {
 		const loadScene = async () => {
 			try {
@@ -37,14 +36,11 @@ const LoadingHandler = () => {
 		} else {
 			setTimeout(loadScene, 0);
 		}
-	}, []);
+	}, [setIsAssetsLoading, setLoadingProgress]);
 
 	return (
 		<>
-			<GlobalUI
-				showLoadingModal={isAssetsLoading}
-				loadingProgress={loadingProgress}
-			/>
+			<GlobalUI />
 		</>
 	);
 };

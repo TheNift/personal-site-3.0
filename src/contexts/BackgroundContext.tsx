@@ -7,6 +7,10 @@ interface BackgroundContextType {
 	setCameraPosition: (index: number) => void;
 	currentPageIndex: number;
 	setCurrentPageIndex: (index: number) => void;
+	isAssetsLoading: boolean;
+	setIsAssetsLoading: (loading: boolean) => void;
+	loadingProgress: number;
+	setLoadingProgress: (progress: number) => void;
 }
 
 const BackgroundContext = createContext<BackgroundContextType | undefined>(
@@ -18,9 +22,11 @@ export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
 	const [cameraPosition, setCameraPosition] = useState(0);
 	const [currentPageIndex, setCurrentPageIndex] = useState(0);
+	const [isAssetsLoading, setIsAssetsLoading] = useState(true);
+	const [loadingProgress, setLoadingProgress] = useState(0);
 	const { strings } = useLanguage();
 
-	useEffect(() => {
+	const updatePageIndex = () => {
 		const navItems = strings.ui.nav;
 		let matchedIndex = 0;
 
@@ -43,7 +49,41 @@ export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({
 
 		setCurrentPageIndex(matchedIndex);
 		setCameraPosition(matchedIndex);
-	}, [location.pathname, strings.ui.nav]);
+	};
+
+	useEffect(() => {
+		updatePageIndex();
+
+		const handleNavigation = () => {
+			updatePageIndex();
+		};
+
+		const originalPushState = history.pushState;
+		const originalReplaceState = history.replaceState;
+
+		history.pushState = function (...args) {
+			originalPushState.apply(history, args);
+			window.dispatchEvent(new Event('pushstate'));
+		};
+
+		history.replaceState = function (...args) {
+			originalReplaceState.apply(history, args);
+			window.dispatchEvent(new Event('replacestate'));
+		};
+
+		window.addEventListener('popstate', handleNavigation);
+		window.addEventListener('pushstate', handleNavigation);
+		window.addEventListener('replacestate', handleNavigation);
+
+		return () => {
+			history.pushState = originalPushState;
+			history.replaceState = originalReplaceState;
+
+			window.removeEventListener('popstate', handleNavigation);
+			window.removeEventListener('pushstate', handleNavigation);
+			window.removeEventListener('replacestate', handleNavigation);
+		};
+	}, [strings.ui.nav]);
 
 	return (
 		<BackgroundContext.Provider
@@ -52,6 +92,10 @@ export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({
 				setCameraPosition,
 				currentPageIndex,
 				setCurrentPageIndex,
+				isAssetsLoading,
+				setIsAssetsLoading,
+				loadingProgress,
+				setLoadingProgress,
 			}}
 		>
 			{children}

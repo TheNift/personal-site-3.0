@@ -101,7 +101,7 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 
 		if (suspense && gltfPath) {
 			return (
-				<Suspense fallback={fallback}>
+				<Suspense fallback={fallback || <group />}>
 					<ModelContent />
 				</Suspense>
 			);

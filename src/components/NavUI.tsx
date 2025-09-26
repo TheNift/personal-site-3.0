@@ -4,6 +4,7 @@ import { useCallback, memo, useMemo, useState } from 'react';
 import { useLanguage } from '@contexts/LanguageContext';
 import ScrambleText from '@components/ScrambleText';
 import { useBackground } from '@contexts/BackgroundContext';
+import { useUI } from '@/contexts/UIContext';
 
 const MemoizedLinkItem = memo(
 	({
@@ -13,6 +14,7 @@ const MemoizedLinkItem = memo(
 		index,
 		onMouseEnter,
 		onMouseLeave,
+		onClick,
 	}: {
 		to: string;
 		keyString: string;
@@ -20,6 +22,7 @@ const MemoizedLinkItem = memo(
 		index?: number;
 		onMouseEnter: (index: number) => void;
 		onMouseLeave: () => void;
+		onClick?: () => void;
 	}) => {
 		const baseDelay = useMemo(() => (index ? index * 0.1 : 0), [index]);
 		const width = 300 - (index ?? 0) * 16;
@@ -63,6 +66,7 @@ const MemoizedLinkItem = memo(
 						e.currentTarget.classList.remove('selected');
 						setIsHovered(false);
 					}}
+					onClick={onClick}
 					draggable={false}
 				>
 					<ScrambleText
@@ -93,17 +97,27 @@ MemoizedLinkItem.displayName = 'MemoizedLinkItem';
 function NavUI() {
 	const { setCameraPosition, currentPageIndex } = useBackground();
 	const { strings } = useLanguage();
-
+	const { setContentHidden } = useUI();
 	const handleMouseEnter = useCallback(
 		(index: number) => {
 			setCameraPosition(index);
+			if (index !== currentPageIndex) {
+				setContentHidden(true);
+			}
 		},
-		[setCameraPosition]
+		[setCameraPosition, setContentHidden, currentPageIndex]
 	);
 
 	const handleMouseLeave = useCallback(() => {
 		setCameraPosition(currentPageIndex);
-	}, [setCameraPosition, currentPageIndex]);
+		setContentHidden(false);
+	}, [setCameraPosition, currentPageIndex, setContentHidden]);
+
+	const handleClick = useCallback(() => {
+		setTimeout(() => {
+			setContentHidden(false);
+		}, 100);
+	}, [setContentHidden]);
 
 	const navItems = useMemo(
 		() =>
@@ -116,13 +130,19 @@ function NavUI() {
 					index={index}
 					onMouseEnter={handleMouseEnter}
 					onMouseLeave={handleMouseLeave}
+					onClick={handleClick}
 				/>
 			)),
 		[handleMouseEnter, handleMouseLeave, strings.ui.nav]
 	);
 
 	return (
-		<div className="flex flex-col absolute z-999 left-0 top-1/3 -translate-y-1/2">
+		<div
+			className="flex flex-col absolute z-999 left-0 top-1/3 -translate-y-1/2"
+			style={{
+				height: navItems.length * 56 + 'px',
+			}}
+		>
 			{navItems}
 		</div>
 	);
