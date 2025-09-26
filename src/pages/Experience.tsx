@@ -48,13 +48,19 @@ function ExperienceItem({ item }: { item: any }) {
 			<h2
 				className={`text-2xl ${language === 'eng' ? 'font-doto font-[900]' : 'font-inter font-semibold'}`}
 			>
-				{item.company}
+				<ScrambleText>{item.company}</ScrambleText>
 			</h2>
 			<div className="flex flex-row justify-between align-center border-b border-yorha-dark/50 pb-2 mb-2">
-				<h3 className="text-md">{item.role}</h3>
+				<h3 className="text-md">
+					<ScrambleText>{item.role}</ScrambleText>
+				</h3>
 				<div className="flex flex-col justify-end align-center text-sm">
-					<p>{item.date}</p>
-					<p>{item.location}</p>
+					<p>
+						<ScrambleText>{item.date}</ScrambleText>
+					</p>
+					<p>
+						<ScrambleText>{item.location}</ScrambleText>
+					</p>
 				</div>
 			</div>
 			<ul className="list-disc list-inside text-sm">

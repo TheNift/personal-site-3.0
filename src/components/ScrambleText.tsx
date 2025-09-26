@@ -8,6 +8,7 @@ interface ScrambleTextProps {
 	tick?: number;
 	step?: number;
 	scramble?: number;
+	overdrive?: boolean | number;
 }
 
 function ScrambleText({
@@ -18,6 +19,7 @@ function ScrambleText({
 	tick,
 	step,
 	scramble,
+	overdrive,
 }: ScrambleTextProps) {
 	const { ref } = useScramble({
 		text: String(children),
@@ -25,6 +27,7 @@ function ScrambleText({
 		tick: tick ?? 5,
 		step: step ?? 5,
 		scramble: scramble ?? 2,
+		overdrive: overdrive ?? false,
 	});
 
 	return (
