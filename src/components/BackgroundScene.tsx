@@ -88,6 +88,9 @@ function CameraController({
 		if (activeIndex === 4) {
 			camera.rotation.z = 0.9 * Math.PI;
 		}
+		// Add rotation to the alr tracked camera position and lookat
+		// Make it optional, so if no rotation it doesn't do anything, but if it has one it lerps to that rotation
+		// Only used on Contact right now
 	});
 
 	return null;
@@ -140,10 +143,11 @@ const BackgroundScene = () => {
 			},
 			// About - looking at motorcycle
 			{
-				position: new Vector3(0, 5, 0),
+				position: new Vector3(0, 5, 0.5),
 				lookAt:
-					modelRefs.motorcycle.current?.location ||
-					new Vector3(0, 0, 0),
+					modelRefs.motorcycle.current?.location.add(
+						new Vector3(0, 4, 0)
+					) || new Vector3(0, 0, 0),
 			},
 			// Experience - looking computer setup
 			{

@@ -85,6 +85,10 @@
 	.menu-btn > * {
 		transform: skewX(15deg);
 	}
+
+	.hidden-scrollbar:hover *::-webkit-scrollbar {
+		color: var(--color-brown);
+	}
 }
 
 * {
@@ -114,4 +118,22 @@ body,
 canvas {
 	width: 100% !important;
 	height: 100% !important;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	opacity: 0;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+	margin: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-yorha);
+	transition: all 0.3s ease-in-out;
+	border-radius: 100vh;
+	border: 2px solid transparent;
+	background-clip: content-box;
 }

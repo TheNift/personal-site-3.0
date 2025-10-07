@@ -11,7 +11,7 @@ const BackgroundScene = lazy(() => import('@components/BackgroundScene'));
 
 function GlobalUI() {
 	return (
-		<div className="h-screen w-screen relative">
+		<div className="h-screen w-screen relative bg-site-bg">
 			<div className="relative h-full w-full z-40 flex flex-col items-center justify-center">
 				<NavUI />
 				<div className="absolute bottom-4 right-4 z-50">

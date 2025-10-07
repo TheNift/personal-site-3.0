@@ -1,0 +1,33 @@
+/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+*.glb
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  
+*.gltf
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+*.obj
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+/fonts/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: public, max-age=31536000, immutable
+
+*.png
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+*.jpg
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+*.jpeg
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+*.svg
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet

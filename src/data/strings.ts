@@ -60,6 +60,36 @@ const english = {
 	},
 	about: {
 		title: 'About',
+		items: {
+			'Basic Info': {
+				'Name': 'Jack Kill',
+				'Pronouns': 'He/Him',
+				'Age': '2001-03-20',
+				'Years of Experience': '2022-07-01',
+				'Location': 'Overland Park, KS',
+				'Education': 'B.S. in Computer Science',
+				'University': 'University of Kansas',
+			},
+			'Hobbies': [
+				'Video Games',
+				'Anime & Manga',
+				'Cars & Motorcycles',
+				'Model Kits',
+				'Keyboards',
+				'Sewing',
+				'Traveling'
+			],
+			'Currently Learning': [
+				'Go',
+				'Rust',
+				'Unreal Engine',
+			],
+			'Design Philosophy': [
+				'Performance, Efficiency, & Low Overhead',
+				'Simplicity',
+				'Modularity & Maintainability',
+			],
+		},
 	},
 	experience: {
 		title: 'Experience',
@@ -189,7 +219,37 @@ const vietnamese = {
 		title: 'Trang chủ',
 	},
 	about: {
-		title: 'Giới thiệu',
+		title: 'About',
+		items: {
+			'Basic Info': {
+				'Name': 'Jack Kill',
+				'Pronouns': 'He/Him',
+				'Age': '2001-03-20',
+				'Years of Experience': '2022-07-01',
+				'Location': 'Overland Park, KS',
+				'Education': 'B.S. in Computer Science',
+				'University': 'University of Kansas',
+			},
+			'Hobbies': [
+				'Video Games',
+				'Anime & Manga',
+				'Cars & Motorcycles',
+				'Model Kits',
+				'Keyboards',
+				'Sewing',
+				'Traveling'
+			],
+			'Currently Learning': [
+				'Go',
+				'Rust',
+				'Unreal Engine',
+			],
+			'Design Philosophy': [
+				'Performance, Efficiency, & Low Overhead',
+				'Simplicity',
+				'Modularity & Maintainability',
+			],
+		},
 	},
 	experience: {
 		title: 'Kinh nghiệm',

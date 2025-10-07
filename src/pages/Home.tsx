@@ -7,10 +7,10 @@ function Home() {
 
 	return (
 		<Page className="flex flex-col items-center justify-start p-4 w-full h-full">
-			<h1 className="text-[100px] text-yorha font-doto tracking-tighter font-[800]">
+			<h1 className="text-[50px] sm:text-[75px] lg:text-[100px] text-yorha font-doto tracking-tighter font-[800]">
 				<ScrambleText scramble={8}>{strings.ui.siteTitle}</ScrambleText>
 			</h1>
-			<p className="text-yorha/60 text-md font-medium">
+			<p className="text-yorha/60 text-sm sm:text-md font-medium">
 				<ScrambleText scramble={10}>
 					{strings.ui.siteDescription}
 				</ScrambleText>
