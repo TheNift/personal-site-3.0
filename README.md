@@ -7,6 +7,8 @@ This era of my personal site was built with:
 - Tailwind
 - ThreeJS
 - Motion
+- React Router
+- ...and many other awesome packages!
 
 ## Quick guide for those interested
 
