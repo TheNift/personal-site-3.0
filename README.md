@@ -1,69 +1,26 @@
-# React + TypeScript + Vite
+# Person Site v3
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal site documentation!
+This era of my personal site was built with:
 
-Currently, two official plugins are available:
+- React + TS via Vite
+- ThreeJS
+- Motion
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Quick guide for those interested
 
-## Expanding the ESLint configuration
+- Inside the `public/` directory, you'll find files relating to the site and hosting.
+- Inside the `src/` directory, you'll find source files for the React app the site runs as.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Inside `src/`, you can find:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `assets/`: Static files required for React components.
+- `components/`: React components! For those who aren't familiar, it's basically just a form of code abstraction where you create re-useable chunks of code that get imported elsewhere.
+- `contexts/`: Context providers, for passing data across different parts of the React app efficiently and easily, without bloating the import tree.
+- `data/`: Data the site is populated with!
+- `hooks/`: Unused right now, but placed with the intention of adding React hooks later. Check back soon!
+- `pages/`: Individual page elements, referenced by React Router to enable routing without harsh reloads. Could technically go into components, but I like abstracting them like this :D
+- `router/`: Contains routes.ts, which tells React Router how to handle the overall site structure and what to start loading when you access a given page.
+- `types/`: Where I place any new types I create for TypeScript components in the app. You could technically place these in the components and export/import them from that component if you'd like, but I like adding a types directory and then creating a path alias for ease of use during development :D
+- `utils/`: Utilities directory; where I place extraneous functions, imports/exports, or anything else I expect to use in multiple places that doesn't already have a logical location.
+- `main.tsx`: The root TypeScript file of the React App! This is what index.html loads to kick off the entire React app. Feel free to start here if you're exploring!
