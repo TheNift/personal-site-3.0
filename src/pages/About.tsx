@@ -22,18 +22,11 @@ function AboutCards() {
 	const { strings } = useLanguage();
 	return (
 		<div className="grid grid-cols-1 lg:grid-cols-2 overflow-y-auto overflow-x-hidden gap-[30px] items-stretch lg:ml-[304px]">
-			<AnimatePresence mode="wait">
-				{Object.entries(strings.about.items).map(
-					([key, value], index) => (
-						<AboutCard
-							key={key}
-							title={key}
-							items={value}
-							index={index}
-						/>
-					)
-				)}
-			</AnimatePresence>
+			{Object.entries(strings.about.items).map(([key, value], index) => (
+				<AnimatePresence mode="wait" key={key}>
+					<AboutCard title={key} items={value} index={index} />
+				</AnimatePresence>
+			))}
 		</div>
 	);
 }

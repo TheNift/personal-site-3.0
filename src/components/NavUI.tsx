@@ -20,8 +20,8 @@ const MemoizedLinkItem = memo(
 		keyString: string;
 		title: string;
 		index?: number;
-		onMouseEnter: (index: number) => void;
-		onMouseLeave: () => void;
+		onMouseEnter?: (index: number) => void;
+		onMouseLeave?: () => void;
 		onClick?: () => void;
 	}) => {
 		const baseDelay = useMemo(() => (index ? index * 0.1 : 0), [index]);
@@ -56,16 +56,26 @@ const MemoizedLinkItem = memo(
 					to={to}
 					className="text-2xl font-bold w-full menu-btn z-5"
 					key={keyString}
-					onMouseEnter={(e) => {
-						onMouseEnter(index ?? 0);
-						setIsHovered(true);
-						e.currentTarget.classList.add('selected');
-					}}
-					onMouseLeave={(e) => {
-						onMouseLeave();
-						e.currentTarget.classList.remove('selected');
-						setIsHovered(false);
-					}}
+					onMouseEnter={
+						onMouseEnter
+							? (e) => {
+									onMouseEnter(index ?? 0);
+									setIsHovered(true);
+									e.currentTarget.classList.add('selected');
+								}
+							: undefined
+					}
+					onMouseLeave={
+						onMouseLeave
+							? (e) => {
+									onMouseLeave();
+									e.currentTarget.classList.remove(
+										'selected'
+									);
+									setIsHovered(false);
+								}
+							: undefined
+					}
 					onClick={onClick}
 					draggable={false}
 				>
@@ -94,9 +104,9 @@ const MemoizedLinkItem = memo(
 	}
 );
 
-MemoizedLinkItem.displayName = 'MemoizedLinkItem';
+MemoizedLinkItem.displayName = 'MemoizedLinkItem'; // this is for React DevTools so it's identifiable
 
-function NavUI() {
+function DesktopNavUI() {
 	const { setCameraPosition, currentPageIndex } = useBackground();
 	const { strings } = useLanguage();
 	const { setContentHidden } = useUI();
@@ -140,13 +150,69 @@ function NavUI() {
 
 	return (
 		<div
-			className="flex flex-col absolute z-999 left-0 top-1/3 -translate-y-1/2"
+			className="hidden md:flex flex-col absolute z-999 left-0 top-1/3 -translate-y-1/2"
 			style={{
 				height: navItems.length * 56 + 'px',
 			}}
 		>
 			{navItems}
 		</div>
+	);
+}
+
+function MobileNavUI() {
+	const { strings } = useLanguage();
+	const { setContentHidden } = useUI();
+	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
+	const handleClick = useCallback(() => {
+		setTimeout(() => {
+			setIsMobileNavOpen(false);
+			setContentHidden(false);
+		}, 100);
+	}, [setContentHidden]);
+
+	const navItems = useMemo(
+		() =>
+			strings.ui.nav.map((item, index) => (
+				<Link
+					key={`nav-${index}-${item.to}-mobile`}
+					to={item.to}
+					onClick={handleClick}
+					className="py-[12px] [&:not(:last-child)]:border-b-2 border-yorha-dark"
+				>
+					<ScrambleText>{item.text}</ScrambleText>
+				</Link>
+			)),
+		[strings.ui.nav, handleClick]
+	);
+
+	return (
+		<>
+			<button
+				className="w-[20px] h-[20px] absolute z-1000 bg-yorha top-[16px] right-[16px] pointer-events-auto md:hidden"
+				onClick={() => {
+					setIsMobileNavOpen(!isMobileNavOpen);
+				}}
+			></button>
+			<motion.div
+				initial={{ left: '-100vw' }}
+				animate={{ left: isMobileNavOpen ? 0 : '-100vw' }}
+				transition={{ duration: 0.3, ease: 'easeInOut' }}
+				className="flex flex-col absolute z-1005 top-1/2 -translate-y-1/2 p-[16px] bg-yorha pointer-events-auto md:hidden border-2 border-yorha-dark border-l-0 shadow-[0_0_20px_rgba(0,0,0,0.9)]"
+			>
+				{navItems}
+			</motion.div>
+		</>
+	);
+}
+
+function NavUI() {
+	return (
+		<>
+			<DesktopNavUI />
+			<MobileNavUI />
+		</>
 	);
 }
 
