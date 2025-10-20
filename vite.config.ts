@@ -28,13 +28,16 @@ export default defineConfig({
     },
   },
   build: {
+    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: {
           // Core React libraries
           'react-vendor': ['react', 'react-dom', 'react-router'],
           // Three.js and related libraries
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          // 'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          'three-library': ['three'],
+          'three-extras': ['@react-three/fiber', '@react-three/drei'],
         },
       },
     },

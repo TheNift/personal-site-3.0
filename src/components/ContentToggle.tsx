@@ -15,6 +15,7 @@ const ContentToggle: React.FC = () => {
 				speed={0.5}
 				step={10}
 				scramble={3}
+				preventLayoutShift
 				className="text-nowrap w-full text-center"
 			>
 				{isContentHidden ? 'Show Content' : 'Hide Content'}

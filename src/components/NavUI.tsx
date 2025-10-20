@@ -73,6 +73,8 @@ const MemoizedLinkItem = memo(
 						speed={0.5}
 						step={10}
 						scramble={5 + (index ?? 0) * 2}
+						preventLayoutShift
+						className="leading-[1em]"
 					>
 						{title}
 					</ScrambleText>

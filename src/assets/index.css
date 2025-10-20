@@ -9,22 +9,6 @@
 }
 
 @font-face {
-	font-family: 'Inter';
-	src: url('/fonts/Inter-Variable.ttf') format('truetype');
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Inter';
-	src: url('/fonts/Inter-Italic-Variable.ttf') format('truetype');
-	font-weight: 100 900;
-	font-style: italic;
-	font-display: swap;
-}
-
-@font-face {
 	font-family: 'JetBrains Mono';
 	src: url('/fonts/JetBrainsMono-Variable.ttf') format('truetype');
 	font-weight: 100 800;
@@ -51,7 +35,6 @@
 	--color-miku-dark: #137a7f;
 
 	--font-doto: 'Doto', sans-serif;
-	--font-inter: 'Inter', sans-serif;
 	--font-jetbrains-mono: 'JetBrains Mono', monospace;
 }
 

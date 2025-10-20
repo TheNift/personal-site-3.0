@@ -9,7 +9,9 @@ function About() {
 	return (
 		<Page className="flex flex-col items-center justify-start p-4 w-full h-full relative">
 			<h1 className="text-[50px] sm:text-[75px] lg:text-[100px] mb-2 text-yorha font-doto font-[800]">
-				<ScrambleText scramble={8}>About</ScrambleText>
+				<ScrambleText scramble={8} preventLayoutShift>
+					About
+				</ScrambleText>
 			</h1>
 			<AboutCards />
 		</Page>
@@ -58,8 +60,8 @@ function AboutCard({
 					delay: index * 0.1,
 				}}
 			>
-				<h2 className="text-2xl font-bold font-inter">
-					<ScrambleText>{title}</ScrambleText>
+				<h2 className="text-2xl font-bold font-jetbrains-mono">
+					<ScrambleText preventLayoutShift>{title}</ScrambleText>
 				</h2>
 				<ul className="list-disc list-inside mt-2">
 					{items.map((item: string) => (
@@ -90,8 +92,8 @@ function AboutCard({
 					delay: index * 0.1,
 				}}
 			>
-				<h2 className="text-2xl font-bold mb-2 font-inter">
-					<ScrambleText>{title}</ScrambleText>
+				<h2 className="text-2xl font-bold mb-2 font-jetbrains-mono">
+					<ScrambleText preventLayoutShift>{title}</ScrambleText>
 				</h2>
 				<ul className="list-disc list-inside">
 					{Object.entries(items).map(([key, value]) => (

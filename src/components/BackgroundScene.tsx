@@ -257,9 +257,9 @@ const BackgroundScene = () => {
 					/>
 					<Mouse
 						ref={modelRefs.mouse}
-						position={[-4.9, 2.85, 3.2]}
-						rotation={[0, 0.1 * Math.PI, 0]}
-						scale={[0.12, 0.12, 0.12]}
+						position={[-4.5, 3, 2.9]}
+						rotation={[0, 1.1 * Math.PI, 0]}
+						scale={[0.004, 0.004, 0.004]}
 						color="white"
 						receiveShadow={true}
 						castShadow={true}

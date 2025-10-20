@@ -2,6 +2,8 @@
 logs
 *.log
 npm-debug.log*
+.yarn/
+.yarn/*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
@@ -13,6 +15,7 @@ dist-ssr
 *.local
 
 # Editor directories and files
+.vscode/
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,6 +25,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.cursor/
 
 # Vite and plugins
 stats.html

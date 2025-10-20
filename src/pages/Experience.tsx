@@ -21,7 +21,9 @@ function Experience() {
 			>
 				<div className="h-full w-full z-5 flex flex-col items-center justify-start aspect-[8.5/11] p-4 bg-yorha relative drop-shadow-lg overflow-y-scroll hidden-scrollbar">
 					<h1 className="text-3xl font-bold underline mb-4 text-yorha-dark">
-						<ScrambleText>{strings.experience.title}</ScrambleText>
+						<ScrambleText preventLayoutShift>
+							{strings.experience.title}
+						</ScrambleText>
 					</h1>
 					<ExperienceItems />
 				</div>
@@ -46,7 +48,7 @@ function ExperienceItem({ item }: { item: any }) {
 	return (
 		<div className="flex flex-col justify-start align-start not-last:mb-[50px]">
 			<h2
-				className={`text-2xl ${language === 'eng' ? 'font-doto font-[900]' : 'font-inter font-semibold'}`}
+				className={`text-2xl ${language === 'eng' ? 'font-doto font-[900]' : 'font-jetbrains-mono font-semibold'}`}
 			>
 				<ScrambleText className="font-doto font-[900]">
 					{item.company}
