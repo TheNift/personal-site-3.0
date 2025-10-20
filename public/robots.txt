@@ -1,8 +1,7 @@
 # Robots.txt
-# Allow only homepage, block everything else for privacy reasons
 
 User-agent: *
-Allow: /$
-Disallow: /
+Allow: /
+Disallow: /contact
 
 Sitemap: https://jackkill.com/sitemap.xml
