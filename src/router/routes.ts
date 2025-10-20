@@ -1,9 +1,8 @@
-import { createBrowserRouter } from 'react-router';
 import LoadingHandler from '@components/LoadingHandler';
 import { lazy } from 'react';
-import Home from '@pages/Home'; // Intentionally not lazy loading this one! It's the first page, so not lazy loading improved LCP
+import { createBrowserRouter } from 'react-router';
 
-// const Home = lazy(() => import('@pages/Home'));
+const Home = lazy(() => import('@pages/Home'));
 const About = lazy(() => import('@pages/About'));
 const PortfolioHome = lazy(() => import('@pages/PortfolioHome'));
 const Project = lazy(() => import('@components/Project'));

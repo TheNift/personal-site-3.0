@@ -6,7 +6,7 @@ function Home() {
 	const { strings } = useLanguage();
 
 	return (
-		<Page className="flex flex-col items-center justify-start p-4 w-full h-full pt-[120px] md:pt-0">
+		<Page className="flex flex-col items-center justify-start p-4 w-full h-full pt-[120px] md:pt-[20px]">
 			<h1 className="text-[50px] leading-[50px] sm:text-[75px] sm:leading-[75px] lg:text-[100px] lg:leading-[100px] text-yorha font-doto tracking-tighter font-[800]">
 				<ScrambleText scramble={8} preventLayoutShift>
 					{strings.ui.siteTitle}
