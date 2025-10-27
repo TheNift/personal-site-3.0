@@ -29,7 +29,7 @@ function AboutCards() {
 					<AboutCard title={key} items={value} index={index} />
 				</AnimatePresence>
 			))}
-			<hr className="h-[50px]" />
+			<hr className="h-[50px] bg-transparent text-transparent" />
 		</div>
 	);
 }

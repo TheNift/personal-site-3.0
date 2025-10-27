@@ -86,7 +86,7 @@ const english = {
 			],
 			'Design Philosophy': [
 				'Performance, Efficiency, & Low Overhead',
-				'Simplicity',
+				'Lean Towards Simplicity',
 				'Modularity & Maintainability',
 			],
 		},

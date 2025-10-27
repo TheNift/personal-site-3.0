@@ -1,4 +1,4 @@
-# Person Site v3
+# Personal Site v3
 
 Welcome to my personal site documentation!
 This era of my personal site was built with:
@@ -10,15 +10,19 @@ This era of my personal site was built with:
 - React Router
 - ...and many other awesome packages!
 
+I built this in my spare time using a couple of hours here and there as I found time, so it's by no means perfect, but it's mine :D
+Feel free to reach out if you'd like to talk about it! Since the code is open source, I'd be honored if I saw a similar site around.
+I plan on updating it with little features and easter eggs as time goes on, so keep an eye out!
+
 ## Quick guide for those interested
 
-Inside the `public/` directory, you'll find files relating to the site and hosting.
-Inside the `src/` directory, you'll find source files for the React app the site runs as.
+Inside the `public/` directory, you'll find files relating to the site, hosting, and static assets I wanted browsers to be able to cache.
+Inside the `src/` directory, you'll find source files for the React app driving the site.
 
 Inside `src/`, you can find:
 
-- `assets/`: Static files required for React components.
-- `components/`: React components! For those who aren't familiar, it's basically just a form of code abstraction where you create re-useable chunks of code that get imported elsewhere.
+- `assets/`: Static files required for React components. Basically just Tailwind's index.css file.
+- `components/`: React components! For those who aren't familiar, it's basically just a form of code abstraction where you create re-useable chunks of code that get imported elsewhere in your project.
 - `contexts/`: Context providers, for passing data across different parts of the React app efficiently and easily, without bloating the import tree.
 - `data/`: Data the site is populated with!
 - `pages/`: Individual page elements, referenced by React Router to enable routing without harsh reloads. Could technically go into components, but I like abstracting them like this :D
