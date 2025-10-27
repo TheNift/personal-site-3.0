@@ -8,12 +8,14 @@ import { useCallback, useState, useEffect } from 'react';
 function About() {
 	return (
 		<Page className="flex flex-col items-center justify-start p-4 w-full h-full relative">
-			<h1 className="text-[50px] sm:text-[75px] lg:text-[100px] mb-2 text-yorha font-doto font-[800]">
-				<ScrambleText scramble={8} preventLayoutShift>
-					About
-				</ScrambleText>
-			</h1>
-			<AboutCards />
+			<div className="w-full h-[60vh] md:h-full flex flex-col items-center justify-start [mask-image:linear-gradient(to_bottom,black_calc(100%-96px),transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_calc(100%-96px),transparent_100%)] md:[mask-image:none] md:[-webkit-mask-image:none]">
+				<h1 className="text-[50px] sm:text-[75px] lg:text-[100px] mb-2 text-yorha font-doto font-[800]">
+					<ScrambleText scramble={8} preventLayoutShift>
+						About
+					</ScrambleText>
+				</h1>
+				<AboutCards />
+			</div>
 		</Page>
 	);
 }
@@ -27,6 +29,7 @@ function AboutCards() {
 					<AboutCard title={key} items={value} index={index} />
 				</AnimatePresence>
 			))}
+			<hr className="h-[50px]" />
 		</div>
 	);
 }

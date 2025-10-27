@@ -11,6 +11,8 @@ interface BackgroundContextType {
 	setIsAssetsLoading: (loading: boolean) => void;
 	loadingProgress: number;
 	setLoadingProgress: (progress: number) => void;
+	isCameraMoving: boolean;
+	setIsCameraMoving: (index: boolean) => void;
 }
 
 const BackgroundContext = createContext<BackgroundContextType | undefined>(
@@ -24,6 +26,7 @@ export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({
 	const [currentPageIndex, setCurrentPageIndex] = useState(0);
 	const [isAssetsLoading, setIsAssetsLoading] = useState(true);
 	const [loadingProgress, setLoadingProgress] = useState(0);
+	const [isCameraMoving, setIsCameraMoving] = useState(true);
 	const { strings } = useLanguage();
 
 	const updatePageIndex = () => {
@@ -96,6 +99,8 @@ export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({
 				setIsAssetsLoading,
 				loadingProgress,
 				setLoadingProgress,
+				isCameraMoving,
+				setIsCameraMoving,
 			}}
 		>
 			{children}

@@ -6,8 +6,9 @@ const Home = lazy(() => import('@pages/Home'));
 const About = lazy(() => import('@pages/About'));
 const PortfolioHome = lazy(() => import('@pages/PortfolioHome'));
 const Project = lazy(() => import('@components/Project'));
-const NotFound = lazy(() => import('@pages/404'));
 const Experience = lazy(() => import('@/pages/Experience'));
+const Contact = lazy(() => import('@pages/Contact'));
+const NotFound = lazy(() => import('@pages/404'));
 
 // Documentation I'm using: https://reactrouter.com/start/data/routing
 
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
 					{ path: ':pid', Component: Project }, // Address: /portfolio/:pid
 				],
 			},
+			{ path: 'contact', Component: Contact }, // Address: /contact
 			{ path: '*', Component: NotFound }, // Catch-all 404 route
 		],
 	},

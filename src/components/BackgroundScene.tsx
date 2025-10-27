@@ -62,6 +62,8 @@ function CameraController({
 	const currentLookAt = useRef(new Vector3());
 	const isInitialized = useRef(false);
 
+	const { setIsCameraMoving } = useBackground();
+
 	useEffect(() => {
 		if (cameraConfigs[activeIndex]) {
 			targetPosition.current.copy(cameraConfigs[activeIndex].position);
@@ -75,11 +77,15 @@ function CameraController({
 				camera.position.copy(cameraConfigs[activeIndex].position);
 				camera.lookAt(cameraConfigs[activeIndex].lookAt);
 				isInitialized.current = true;
+			} else {
+				setIsCameraMoving(true);
 			}
 		}
 	}, [cameraConfigs, activeIndex, camera]);
 
 	useFrame(() => {
+		const MOVEMENT_THRESHOLD = 0.005;
+
 		currentPosition.current.lerp(targetPosition.current, 0.05);
 		currentLookAt.current.lerp(targetLookAt.current, 0.05);
 
@@ -88,6 +94,20 @@ function CameraController({
 		if (activeIndex === 4) {
 			camera.rotation.z = 0.9 * Math.PI;
 		}
+
+		const positionDistance = currentPosition.current.distanceTo(
+			targetPosition.current
+		);
+		const lookAtDistance = currentLookAt.current.distanceTo(
+			targetLookAt.current
+		);
+
+		const isMoving =
+			positionDistance > MOVEMENT_THRESHOLD ||
+			lookAtDistance > MOVEMENT_THRESHOLD;
+
+		setIsCameraMoving(isMoving);
+
 		// Add rotation to the alr tracked camera position and lookat
 		// Make it optional, so if no rotation it doesn't do anything, but if it has one it lerps to that rotation
 		// Only used on Contact right now
@@ -153,7 +173,8 @@ const BackgroundScene = () => {
 			{
 				position: new Vector3(0, 5, -1),
 				lookAt:
-					modelRefs.monitor.current?.location || new Vector3(0, 0, 0),
+					modelRefs.monitor.current?.location.clone() ||
+					new Vector3(0, 0, 0),
 			},
 			// Portfolio - looking at shelf
 			{
@@ -167,10 +188,11 @@ const BackgroundScene = () => {
 			{
 				position: new Vector3(-1.1, 3.2, 3),
 				lookAt:
-					modelRefs.phone.current?.location || new Vector3(0, 0, 0),
+					modelRefs.phone.current?.location.clone() ||
+					new Vector3(0, 0, 0),
 			},
 		],
-		[modelRefs]
+		[isAssetsLoading]
 	);
 
 	return (

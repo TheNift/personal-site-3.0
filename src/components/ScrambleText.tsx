@@ -11,6 +11,8 @@ interface ScrambleTextProps {
 	scramble?: number;
 	overdrive?: boolean | number;
 	preventLayoutShift?: boolean;
+	playOnMount?: boolean;
+	delay?: number;
 }
 
 function ScrambleText({
@@ -23,6 +25,8 @@ function ScrambleText({
 	scramble,
 	overdrive,
 	preventLayoutShift = false,
+	playOnMount = true,
+	delay = 0,
 }: ScrambleTextProps) {
 	const [measuredWidth, setMeasuredWidth] = useState<number | null>(null);
 	const measureRef = useRef<HTMLSpanElement>(null);
@@ -35,14 +39,24 @@ function ScrambleText({
 		}
 	}, [textContent, preventLayoutShift]);
 
-	const { ref } = useScramble({
+	const { ref, replay } = useScramble({
 		text: textContent,
 		speed: speed ?? 0.5,
 		tick: tick ?? 5,
 		step: step ?? 5,
 		scramble: scramble ?? 2,
 		overdrive: overdrive ?? false,
+		playOnMount,
 	});
+
+	useEffect(() => {
+		if (!playOnMount && delay > 0) {
+			const timer = setTimeout(() => {
+				replay();
+			}, delay);
+			return () => clearTimeout(timer);
+		}
+	}, [delay, playOnMount, replay]);
 
 	if (preventLayoutShift) {
 		return (

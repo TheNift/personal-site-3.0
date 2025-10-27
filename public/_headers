@@ -15,13 +15,13 @@
   Cache-Control: public, max-age=86400
 
 *.glb
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=2592000, immutable
   
 *.gltf
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=2592000, immutable
 
 *.obj
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=2592000, immutable
 
 /fonts/*
   Cache-Control: public, max-age=86400, immutable

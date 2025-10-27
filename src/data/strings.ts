@@ -40,7 +40,7 @@ const english = {
 		},
         projectReturnText: 'Portfolio',
 		siteTitle: 'Jack Kill',
-		siteDescription: 'Software Engineer @ Propaganda3',
+		siteDescription: 'Software Engineer | Always Improving',
 		languageToggle: 'Tiếng Việt',
 	},
 	colors: {
@@ -127,7 +127,7 @@ const english = {
 					'Collaborated with a team of developers to create client apps & websites, as well as automated maintenance scripts & test cases.',
 					'Gained hands-on experience with SaaS and Agile Production methodologies in a dynamic team-based active learning environment.',
 					'Gained a greater understanding of project management by observing projects that reach tens of thousands of end users from conceptualization to first release, while considering various factors such as performance, efficiency, and ADA compliance.',
-					'Tools used include JavaScript, TypeScript, React-Native, Expo, Python, Selenium, PHP, AWS, and Propaganda3’s WPO codebase.'
+					'Tools used include JavaScript, TypeScript, React-Native, Expo, Python, Selenium, PHP, AWS, and proprietary codebases.'
 				],
 			},
 			{
@@ -156,6 +156,14 @@ const english = {
 			slug: 'p3-valentine',
 		},
 	},
+	contact: {
+		title: "Contact Me!",
+		form: {
+			name: "Name",
+			email: "Email",
+			message: "Message"
+		}
+	}
 };
 
 const vietnamese = {
@@ -200,7 +208,7 @@ const vietnamese = {
 		},
         projectReturnText: 'Danh mục',
 		siteTitle: 'Jack Kill',
-		siteDescription: 'Kỹ sư phần mềm @ Propaganda3',
+		siteDescription: 'Kỹ sư phần mềm | Luôn luôn cải thiện',
 		languageToggle: 'English',
 	},
 	colors: {
@@ -219,35 +227,35 @@ const vietnamese = {
 		title: 'Trang chủ',
 	},
 	about: {
-		title: 'About',
+		title: 'Giới thiệu',
 		items: {
-			'Basic Info': {
-				'Name': 'Jack Kill',
-				'Pronouns': 'He/Him',
-				'Age': '2001-03-20',
-				'Years of Experience': '2022-07-01',
-				'Location': 'Overland Park, KS',
-				'Education': 'B.S. in Computer Science',
-				'University': 'University of Kansas',
+			'Thông tin cơ bản': {
+				'Tên': 'Jack Kill',
+				'Đại từ': 'He/Him',
+				'Tuổi': '2001-03-20',
+				'Số năm kinh nghiệm': '2022-07-01',
+				'Địa điểm': 'Overland Park, KS',
+				'Học vấn': 'Cử nhân Khoa học Máy tính',
+				'Trường đại học': 'University of Kansas',
 			},
-			'Hobbies': [
-				'Video Games',
+			'Sở thích': [
+				'Trò chơi điện tử',
 				'Anime & Manga',
-				'Cars & Motorcycles',
-				'Model Kits',
-				'Keyboards',
-				'Sewing',
-				'Traveling'
+				'Ô tô & Xe máy',
+				'Mô hình lắp ráp',
+				'Bàn phím cơ',
+				'May vá',
+				'Du lịch'
 			],
-			'Currently Learning': [
+			'Đang học': [
 				'Go',
 				'Rust',
 				'Unreal Engine',
 			],
-			'Design Philosophy': [
-				'Performance, Efficiency, & Low Overhead',
-				'Simplicity',
-				'Modularity & Maintainability',
+			'Triết lý thiết kế': [
+				'Hiệu suất, Hiệu quả & Chi phí thấp',
+				'Sự đơn giản',
+				'Tính mô-đun & Khả năng bảo trì',
 			],
 		},
 	},
@@ -274,7 +282,7 @@ const vietnamese = {
 				lines: [
 					'Hỗ trợ một nhóm các Chuyên viên phân tích IT trong việc cung cấp hỗ trợ cho nhân viên bệnh viện và cài đặt & cấu hình các hệ thống bệnh viện mới.',
 					'Thể hiện khả năng giải quyết vấn đề mạnh mẽ trong việc giải quyết các vấn đề IT phức tạp liên quan đến cả phần mềm và phần cứng.',
-					'Tham gia và đóng góp vào các cuộc họp nhân viên liên quan đến lập kế hoạch hệ thống, tối ưu hóa khối lượng công việc, và tích hợp machine learning.',
+					'Tham gia và đóng góp vào các cuộc họp nhân viên liên quan đến lập kế hoạch hệ thống, tối ưu hóa khối lượng công việc, và tích hợp học máy.',
 					'Học hỏi về triển khai công nghệ quy mô lớn, triển khai & tích hợp mạng, và quản lý hệ thống.'
 				],
 			},
@@ -284,10 +292,10 @@ const vietnamese = {
 				date: 'Tháng 7, 2022 - Tháng 1, 2024',
 				location: 'Overland Park, KS',
 				lines: [
-					'Hợp tác với một nhóm các nhà phát triển để tạo ra các ứng dụng & trang web khách hàng, cũng như các script bảo trì tự động & test case.',
+					'Hợp tác với một nhóm các nhà phát triển để tạo ra các ứng dụng & trang web khách hàng, cũng như các script bảo trì tự động & bộ thử nghiệm.',
 					'Có được kinh nghiệm thực tế với các phương pháp SaaS và Agile Production trong một môi trường học tập chủ động dựa trên nhóm năng động.',
 					'Có được hiểu biết sâu hơn về quản lý dự án bằng cách quan sát các dự án tiếp cận hàng chục nghìn người dùng cuối từ khái niệm hóa đến phát hành đầu tiên, trong khi xem xét các yếu tố khác nhau như hiệu suất, hiệu quả, và tuân thủ ADA.',
-					'Các công cụ được sử dụng bao gồm JavaScript, TypeScript, React-Native, Expo, Python, Selenium, PHP, AWS, và codebase WPO của Propaganda3.'
+					'Các công cụ được sử dụng bao gồm JavaScript, TypeScript, React-Native, Expo, Python, Selenium, PHP, AWS, và các codebase độc quyền.'
 				],
 			},
 			{

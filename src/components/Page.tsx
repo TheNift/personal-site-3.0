@@ -11,7 +11,7 @@ function Page({
 	const { isAssetsLoading } = useBackground();
 	return (
 		<motion.div
-			initial={{ opacity: isAssetsLoading ? 1 : 0 }} // The idea is if assets are loading, it's the initial page load, so to improve LCP and FCP we show the page instantly
+			initial={{ opacity: isAssetsLoading ? 1 : 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 			transition={{
