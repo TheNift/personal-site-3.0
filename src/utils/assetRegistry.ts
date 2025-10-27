@@ -8,6 +8,7 @@ export const ASSETS = {
   plant: '/models/plant.glb',
   shelf: '/models/shelf.glb',
   motorcycle: '/models/sv650.glb',
+  maxwell: '/models/maxwell.glb',
 } as const;
 
 export type AssetKey = keyof typeof ASSETS;

@@ -2,8 +2,6 @@ import { useRef, useEffect, useState, useMemo } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { motion } from 'motion/react';
 import { Vector3, Color } from 'three';
-import { ShaderLayer } from '@components/ShaderLayer';
-import { bayer8x8Shader } from '@shaders';
 import {
 	Motorcycle,
 	Desk,
@@ -15,9 +13,12 @@ import {
 	Shelf,
 	Phone,
 } from '@models';
+import { SpinningMaxwell } from '@components/SpinningMaxwell';
 import type { ModelHandle } from '@types';
 import { useBackground } from '@contexts/BackgroundContext';
 import { useLanguage } from '@contexts/LanguageContext';
+import { bayer8x8Shader } from '@components/shaders';
+import { ShaderLayer } from './ShaderLayer';
 
 function LightSource() {
 	return (
@@ -267,6 +268,12 @@ const BackgroundScene = () => {
 						castShadow={true}
 						suspense={true}
 					/>
+					<group
+						position={[-3.48, 4.35, 3.95]}
+						rotation={[0.06 * Math.PI, 1 * Math.PI, 0]}
+					>
+						<SpinningMaxwell />
+					</group>
 					<Keyboard
 						ref={modelRefs.keyboard}
 						position={[-2.9, 2.85, 2.9]}

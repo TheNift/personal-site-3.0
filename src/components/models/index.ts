@@ -1,11 +1,12 @@
 export { BaseModel } from './BaseModel';
-export { Cube } from './Cube';
-export { Motorcycle } from './Motorcycle';
-export { Desk } from './Desk';
-export { Monitor } from './Monitor';
 export { Chair } from './Chair';
+export { Cube } from './Cube';
+export { Desk } from './Desk';
 export { Keyboard } from './Keyboard';
+export { Maxwell } from './Maxwell';
+export { Monitor } from './Monitor';
+export { Motorcycle } from './Motorcycle';
 export { Mouse } from './Mouse';
+export { Phone } from './Phone';
 export { Plant } from './Plant';
 export { Shelf } from './Shelf';
-export { Phone } from './Phone';

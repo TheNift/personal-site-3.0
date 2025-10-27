@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { type Vector3, type Euler, type Mesh, type Group } from 'three';
+import { type Euler, type Group, type Mesh, type Vector3 } from 'three';
 
 export interface Project {
 	title: string;

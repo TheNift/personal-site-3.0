@@ -30,45 +30,53 @@ function Contact() {
 						{strings.contact.title}
 					</ScrambleText>
 				</h1>
-				<form className="flex flex-col gap-6" autoComplete="off">
-					<div className="flex flex-col gap-2">
-						<label htmlFor="name" className="text-yorha text-sm">
-							{strings.contact.form.name}
-						</label>
-						<input
-							type="text"
-							id="name"
-							name="name"
-							className="bg-transparent border border-yorha text-yorha px-3 py-2 focus:outline-none focus:ring-1 focus:ring-yorha"
-						/>
-					</div>
-
-					<div className="flex flex-col gap-2">
-						<label htmlFor="email" className="text-yorha text-sm">
-							{strings.contact.form.email}
-						</label>
-						<input
-							type="email"
-							id="email"
-							name="email"
-							className="bg-transparent border border-yorha text-yorha px-3 py-2 focus:outline-none focus:ring-1 focus:ring-yorha"
-						/>
-					</div>
-
-					<div className="flex flex-col gap-2">
-						<label htmlFor="message" className="text-yorha text-sm">
-							{strings.contact.form.message}
-						</label>
-						<textarea
-							id="message"
-							name="message"
-							rows={6}
-							className="bg-transparent border border-yorha text-yorha px-3 py-2 resize-none focus:outline-none focus:ring-1 focus:ring-yorha"
-						/>
-					</div>
-				</form>
+				<ContactForm />
 			</motion.div>
 		</div>
+	);
+}
+
+function ContactForm() {
+	const { strings } = useLanguage();
+
+	return (
+		<form className="flex flex-col gap-6" autoComplete="off">
+			<div className="flex flex-col gap-2">
+				<label htmlFor="name" className="text-yorha text-sm">
+					{strings.contact.form.name}
+				</label>
+				<input
+					type="text"
+					id="name"
+					name="name"
+					className="bg-transparent border border-yorha text-yorha px-3 py-2 focus:outline-none focus:ring-1 focus:ring-yorha"
+				/>
+			</div>
+
+			<div className="flex flex-col gap-2">
+				<label htmlFor="email" className="text-yorha text-sm">
+					{strings.contact.form.email}
+				</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					className="bg-transparent border border-yorha text-yorha px-3 py-2 focus:outline-none focus:ring-1 focus:ring-yorha"
+				/>
+			</div>
+
+			<div className="flex flex-col gap-2">
+				<label htmlFor="message" className="text-yorha text-sm">
+					{strings.contact.form.message}
+				</label>
+				<textarea
+					id="message"
+					name="message"
+					rows={6}
+					className="bg-transparent border border-yorha text-yorha px-3 py-2 resize-none focus:outline-none focus:ring-1 focus:ring-yorha"
+				/>
+			</div>
+		</form>
 	);
 }
 
