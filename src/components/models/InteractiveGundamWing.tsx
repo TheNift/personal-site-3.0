@@ -32,7 +32,7 @@ export function InteractiveGundamWing({
 	const location = useLocation();
 	const initialPos = useMemo(() => new Vector3(...position), [position]);
 	const targetPos = useMemo(() => new Vector3(), []);
-	const labelBaseOffset = 1.1;
+	const labelBaseOffset = 1.15;
 	const labelTargetPos = useMemo(() => new Vector3(), []);
 	const labelGroupRef = useRef<Group>(null);
 	const initialScale = useMemo(() => new Vector3(...scale), [scale]);
@@ -89,7 +89,7 @@ export function InteractiveGundamWing({
 					labelTargetPos.set(
 						position[0],
 						position[1] + labelBaseOffset * scaleMultiplier,
-						position[2]
+						position[2] + 0.2
 					);
 					labelGroupRef.current.position.lerp(labelTargetPos, step);
 				}

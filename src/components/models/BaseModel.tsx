@@ -86,25 +86,22 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 			}
 		});
 
-		const ModelContent = () => {
-			if (gltfPath && clonedScene) {
-				return (
-					<group
-						ref={meshRef}
-						position={position}
-						rotation={rotation}
-						scale={scale}
-						onClick={onClick}
-						onPointerOver={onPointerOver}
-						onPointerOut={onPointerOut}
-						onPointerMove={onPointerMove}
-					>
-						<primitive object={clonedScene} />
-					</group>
-				);
-			}
-
-			return (
+		const content =
+			gltfPath && clonedScene ? (
+				<group
+					ref={meshRef}
+					position={position}
+					rotation={rotation}
+					scale={scale}
+					onClick={onClick}
+					onPointerOver={onPointerOver}
+					onPointerOut={onPointerOut}
+					onPointerMove={onPointerMove}
+				>
+					<primitive object={clonedScene} />
+					{children}
+				</group>
+			) : (
 				<mesh
 					ref={meshRef}
 					position={position}
@@ -120,17 +117,14 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 					{children}
 				</mesh>
 			);
-		};
 
 		if (suspense && gltfPath) {
 			return (
-				<Suspense fallback={fallback || <group />}>
-					<ModelContent />
-				</Suspense>
+				<Suspense fallback={fallback || <group />}>{content}</Suspense>
 			);
 		}
 
-		return <ModelContent />;
+		return content;
 	}
 );
 

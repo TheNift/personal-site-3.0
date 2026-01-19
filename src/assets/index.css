@@ -120,3 +120,7 @@ canvas {
 	border: 2px solid transparent;
 	background-clip: content-box;
 }
+
+.grecaptcha-badge {
+	visibility: hidden !important;
+}

@@ -37,12 +37,12 @@ export interface BaseModelProps {
 	castShadow?: boolean;
 }
 
-export interface CubeProps extends Omit<BaseModelProps, 'children'> {
+export interface CubeProps extends BaseModelProps {
 	color?: string;
 	size?: [number, number, number];
 }
 
-export interface GLTFModelProps extends Omit<BaseModelProps, 'children' | 'gltfPath'> {
+export interface GLTFModelProps extends Omit<BaseModelProps, 'gltfPath'> {
 	gltfPath: string;
 	animations?: string[];
 }

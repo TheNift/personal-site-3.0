@@ -87,7 +87,7 @@ export function InteractiveRay({
 
 				if (labelGroupRef.current) {
 					labelTargetPos.set(
-						position[0] + 0.25,
+						position[0] + 0.4,
 						position[1] + labelBaseOffset * scaleMultiplier,
 						position[2]
 					);

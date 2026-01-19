@@ -15,7 +15,9 @@ import {
 	Phone,
 	InteractiveRay,
 	InteractiveGundamWing,
+	ContactForm3D,
 } from '@models';
+import { useLocation } from 'react-router';
 import { SpinningMaxwell } from '@components/SpinningMaxwell';
 import type { ModelHandle } from '@types';
 import { useBackground } from '@contexts/BackgroundContext';
@@ -143,6 +145,7 @@ const BackgroundScene = () => {
 	const { cameraPosition, isAssetsLoading } = useBackground();
 	const { strings } = useLanguage();
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	useEffect(() => {
 		if (!isAssetsLoading && isSceneReady) {
@@ -198,7 +201,7 @@ const BackgroundScene = () => {
 			},
 			// Contact - looking at phone
 			{
-				position: new Vector3(-1.1, 3.2, 3),
+				position: new Vector3(-1.1, 3.4, 3),
 				lookAt:
 					modelRefs.phone.current?.location.clone() ||
 					new Vector3(0, 0, 0),
@@ -340,8 +343,8 @@ const BackgroundScene = () => {
 						position={[-6, 5.32, 2.9]}
 						rotation={[0, 1.5 * Math.PI, 0]}
 						scale={[0.75, 0.75, 0.75]}
-						label="Camp Nelson"
-						slug="camp-nelson"
+						label={strings.projects.personalSite.title}
+						slug={strings.projects.personalSite.slug}
 						onNavigate={navigate}
 					/>
 					<InteractiveGundamWing
@@ -352,8 +355,8 @@ const BackgroundScene = () => {
 							-0.05 * Math.PI,
 						]}
 						scale={[0.3, 0.3, 0.3]}
-						label="P3 Valentine"
-						slug="p3-valentine"
+						label={strings.projects.p3Projects.title}
+						slug={strings.projects.p3Projects.slug}
 						onNavigate={navigate}
 					/>
 					<Phone
@@ -365,7 +368,9 @@ const BackgroundScene = () => {
 						receiveShadow={true}
 						castShadow={true}
 						suspense={true}
-					/>
+					>
+						{location.pathname === '/contact' && <ContactForm3D />}
+					</Phone>
 					<CameraController
 						cameraConfigs={cameraConfigs}
 						activeIndex={cameraPosition}

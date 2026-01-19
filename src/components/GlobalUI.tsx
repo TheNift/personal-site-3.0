@@ -13,12 +13,14 @@ const BackgroundScene = lazy(() => import('@components/BackgroundScene'));
 function GlobalUI() {
 	const location = useLocation();
 	const isPortfolio = location.pathname.startsWith('/portfolio');
+	const isContact = location.pathname === '/contact';
+	const isInteractive = isPortfolio || isContact;
 
 	return (
 		<div className="h-screen w-screen relative bg-site-bg">
 			<div
 				className={`relative h-full w-full z-40 flex flex-col items-center justify-center ${
-					isPortfolio ? 'pointer-events-none' : ''
+					isInteractive ? 'pointer-events-none' : ''
 				}`}
 			>
 				<NavUI />

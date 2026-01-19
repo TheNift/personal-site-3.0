@@ -39,7 +39,7 @@ const english = {
 				'Making coffee...'
 			],
 		},
-        projectReturnText: 'Portfolio',
+        projectReturnText: 'Exit',
 		siteTitle: 'Jack Kill',
 		siteDescription: 'Software Engineer | Always Improving',
 		languageToggle: 'Tiếng Việt',
@@ -151,16 +151,16 @@ const english = {
 		personalSite: {
 			title: 'Personal Site',
 			slug: 'personal-site',
-			description: 'My personal site, built with React, Tailwind, and ThreeJS.',
+			description: 'Built with React, Tailwind, and ThreeJS.',
 			image: 'personal-site.webp',
-			body: 'My personal site, built with React, Tailwind, and ThreeJS. I built it to showcase my current skills and capabilities, and plan to update it whenever I learn something new!',
+			body: 'I built this personal site to showcase my current skills and capabilities, and plan to update it whenever I learn something new!',
 		},
 		p3Projects: {
 			title: 'Projects @ Propaganda3',
 			slug: 'p3-projects',
 			description: 'Always making cool stuff at P3!',
 			image: 'p3-projects.webp',
-			body: 'At Propaganda3, I work on a wide spectrum of projects, from apps to websites to visual displays in game engines. Please reach out to talk about details!',
+			body: 'At Propaganda3 I work on a wide spectrum of projects, from apps to websites to visual displays in game engines. Please reach out to talk about details!',
 		},
 	},
 	contact: {
@@ -168,7 +168,11 @@ const english = {
 		form: {
 			name: "Name",
 			email: "Email",
-			message: "Message"
+			subject: "Subject",
+			message: "Message",
+			submit: "Submit",
+			success: "Sent!",
+			error: "Error",
 		}
 	}
 };
