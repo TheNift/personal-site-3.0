@@ -80,6 +80,15 @@ const english = {
 				'Tailoring',
 				'Traveling'
 			],
+			'Profficient In': [
+				'JavaScript',
+				'TypeScript',
+				'React (Vite, Next.js)',
+				'React-Native (Expo)',
+				'C++',
+				'Python',
+				'PHP',
+			],
 			'Currently Learning': [
 				'Go',
 				'Java',

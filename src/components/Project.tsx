@@ -23,12 +23,12 @@ function Project() {
 			<div className="h-full z-5 flex flex-col items-center justify-start text-center aspect-[8.5/11] max-w-[96vw] p-4 pt-[100px] bg-yorha relative drop-shadow-lg overflow-y-scroll hidden-scrollbar shadow-[0_0_20px_rgba(0,0,0,0.9)]">
 				<ReturnButton />
 				<img
-					className="mb-4 w-[60%] aspect-[3/2] object-contain"
+					className="mb-4 w-[60%] aspect-3/2 object-contain"
 					src={`/images/projects/${project.image}`}
 					alt={project.title}
 				/>
 				<h1 className="text-3xl font-bold">
-					<ScrambleText scramble={10} preventLayoutShift>
+					<ScrambleText scramble={10}>
 						{project.title}
 					</ScrambleText>
 				</h1>

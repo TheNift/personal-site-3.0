@@ -24,7 +24,7 @@ function About() {
 function AboutCards() {
 	const { strings } = useLanguage();
 	return (
-		<div className="grid grid-cols-1 lg:grid-cols-2 overflow-y-auto overflow-x-hidden gap-[30px] items-stretch lg:ml-[304px]">
+		<div className="grid grid-cols-1 lg:grid-cols-3 overflow-y-auto overflow-x-hidden gap-[30px] items-stretch lg:ml-[304px]">
 			{Object.entries(strings.about.items).map(([key, value], index) => (
 				<AnimatePresence mode="wait" key={key}>
 					<AboutCard title={key} items={value} index={index} />
