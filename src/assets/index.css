@@ -124,3 +124,18 @@ canvas {
 .grecaptcha-badge {
 	visibility: hidden !important;
 }
+
+.experience-scrollbar::-webkit-scrollbar {
+	width: 8px !important;
+}
+
+.experience-scrollbar::-webkit-scrollbar-thumb {
+	background: color-mix(
+		in srgb,
+		var(--color-yorha-dark),
+		transparent 40%
+	) !important;
+	border-radius: 100vh !important;
+	border: 2px solid transparent !important;
+	background-clip: content-box !important;
+}

@@ -19,7 +19,7 @@ function Experience() {
 				transition={{ duration: 0.3, ease: 'easeInOut' }}
 				className="relative my-[50px] h-full"
 			>
-				<div className="h-full w-full z-5 flex flex-col items-center justify-start aspect-[8.5/11] max-w-[96vw] p-4 bg-yorha relative drop-shadow-lg overflow-y-scroll hidden-scrollbar shadow-[0_0_20px_rgba(0,0,0,0.9)]">
+				<div className="h-full w-full z-5 flex flex-col items-center justify-start aspect-[8.5/11] max-w-[96vw] p-4 bg-yorha relative drop-shadow-lg overflow-y-scroll shadow-[0_0_20px_rgba(0,0,0,0.9)] experience-scrollbar">
 					<h1 className="text-3xl font-bold underline mb-4 text-yorha-dark">
 						<ScrambleText preventLayoutShift>
 							{strings.experience.title}

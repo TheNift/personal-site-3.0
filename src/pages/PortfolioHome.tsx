@@ -15,7 +15,7 @@ function PortfolioHome() {
 			</h1>
 			<p className="text-yorha/60 text-sm sm:text-md font-medium">
 				<ScrambleText scramble={10} preventLayoutShift>
-					Hover an object to see project info!
+					Click an object to see project info!
 				</ScrambleText>
 			</p>
 		</Page>

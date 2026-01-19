@@ -190,11 +190,36 @@ function MobileNavUI() {
 	return (
 		<>
 			<button
-				className="w-[20px] h-[20px] absolute z-1000 bg-yorha top-[16px] right-[16px] pointer-events-auto md:hidden"
+				className="w-[20px] h-[20px] absolute z-1000 bg-yorha top-[16px] right-[16px] pointer-events-auto md:hidden flex flex-col justify-center items-center"
 				onClick={() => {
 					setIsMobileNavOpen(!isMobileNavOpen);
 				}}
 			>
+				<div className="w-full h-[14px] flex flex-col justify-between items-center relative">
+					<motion.span
+						className="w-[80%] h-[2px] bg-yorha-dark block origin-center rounded-full"
+						animate={{
+							rotate: isMobileNavOpen ? 45 : 0,
+							y: isMobileNavOpen ? 6 : 0,
+						}}
+						transition={{ duration: 0.3 }}
+					/>
+					<motion.span
+						className="w-[80%] h-[2px] bg-yorha-dark block rounded-full"
+						animate={{
+							opacity: isMobileNavOpen ? 0 : 1,
+						}}
+						transition={{ duration: 0.3 }}
+					/>
+					<motion.span
+						className="w-[80%] h-[2px] bg-yorha-dark block origin-center rounded-full"
+						animate={{
+							rotate: isMobileNavOpen ? -45 : 0,
+							y: isMobileNavOpen ? -6 : 0,
+						}}
+						transition={{ duration: 0.3 }}
+					/>
+				</div>
 				<span className="sr-only">Menu</span>
 			</button>
 			<motion.div

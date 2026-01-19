@@ -176,7 +176,7 @@ export function ContactForm3D() {
 								/>
 							)}
 
-							<div className="flex flex-col items-end w-full gap-2">
+							<div className="flex flex-row items-center justify-end w-full gap-2">
 								<button
 									type="submit"
 									disabled={isSending}

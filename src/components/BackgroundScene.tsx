@@ -54,7 +54,11 @@ function LightSource() {
 interface CameraConfig {
 	position: Vector3;
 	lookAt: Vector3;
+	mobilePosition?: Vector3;
+	mobileLookAt?: Vector3;
 }
+
+const MOBILE_BREAKPOINT = 768;
 
 interface ModelRefs {
 	[key: string]: React.RefObject<ModelHandle>;
@@ -67,7 +71,9 @@ function CameraController({
 	cameraConfigs: CameraConfig[];
 	activeIndex: number;
 }) {
-	const { camera } = useThree();
+	const { camera, size } = useThree();
+	const isMobile = size.width < MOBILE_BREAKPOINT;
+
 	const targetPosition = useRef(new Vector3());
 	const currentPosition = useRef(new Vector3());
 	const targetLookAt = useRef(new Vector3());
@@ -78,22 +84,30 @@ function CameraController({
 
 	useEffect(() => {
 		if (cameraConfigs[activeIndex]) {
-			targetPosition.current.copy(cameraConfigs[activeIndex].position);
-			targetLookAt.current.copy(cameraConfigs[activeIndex].lookAt);
+			const config = cameraConfigs[activeIndex];
+			const targetPos =
+				isMobile && config.mobilePosition
+					? config.mobilePosition
+					: config.position;
+			const targetLook =
+				isMobile && config.mobileLookAt
+					? config.mobileLookAt
+					: config.lookAt;
+
+			targetPosition.current.copy(targetPos);
+			targetLookAt.current.copy(targetLook);
 
 			if (!isInitialized.current) {
-				currentPosition.current.copy(
-					cameraConfigs[activeIndex].position
-				);
-				currentLookAt.current.copy(cameraConfigs[activeIndex].lookAt);
-				camera.position.copy(cameraConfigs[activeIndex].position);
-				camera.lookAt(cameraConfigs[activeIndex].lookAt);
+				currentPosition.current.copy(targetPos);
+				currentLookAt.current.copy(targetLook);
+				camera.position.copy(targetPos);
+				camera.lookAt(targetLook);
 				isInitialized.current = true;
 			} else {
 				setIsCameraMoving(true);
 			}
 		}
-	}, [cameraConfigs, activeIndex, camera]);
+	}, [cameraConfigs, activeIndex, camera, isMobile]);
 
 	useFrame(() => {
 		const MOVEMENT_THRESHOLD = 0.005;
@@ -175,6 +189,8 @@ const BackgroundScene = () => {
 			{
 				position: new Vector3(0, 8, -5),
 				lookAt: new Vector3(1, 0, 6),
+				mobilePosition: new Vector3(-3, 6, -5),
+				mobileLookAt: new Vector3(-3.5, 2, 3.5),
 			},
 			// About - looking at motorcycle
 			{
@@ -182,6 +198,11 @@ const BackgroundScene = () => {
 				lookAt:
 					modelRefs.motorcycle.current?.location.add(
 						new Vector3(0, 4, 0)
+					) || new Vector3(0, 0, 0),
+				mobilePosition: new Vector3(-5, 5, -1),
+				mobileLookAt:
+					modelRefs.motorcycle.current?.location.add(
+						new Vector3(0, 6, 0)
 					) || new Vector3(0, 0, 0),
 			},
 			// Experience - looking computer setup
@@ -197,6 +218,11 @@ const BackgroundScene = () => {
 				lookAt:
 					modelRefs.shelf.current?.location.add(
 						new Vector3(0, 1, 0)
+					) || new Vector3(0, 0, 0),
+				mobilePosition: new Vector3(-3, 6, 2),
+				mobileLookAt:
+					modelRefs.shelf.current?.location.add(
+						new Vector3(0, 1, -0.2)
 					) || new Vector3(0, 0, 0),
 			},
 			// Contact - looking at phone
