@@ -229,16 +229,16 @@ const vietnamese = {
 	about: {
 		title: 'Giới thiệu',
 		items: {
-			'Thông tin cơ bản': {
-				'Tên': 'Jack Kill',
-				'Đại từ': 'He/Him',
-				'Tuổi': '2001-03-20',
-				'Số năm kinh nghiệm': '2022-07-01',
-				'Địa điểm': 'Overland Park, KS',
-				'Học vấn': 'Cử nhân Khoa học Máy tính',
-				'Trường đại học': 'University of Kansas',
+			'Basic Info': {
+				'Name': 'Jack Kill',
+				'Pronouns': 'He/Him',
+				'Age': '2001-03-20',
+				'Years of Experience': '2022-07-01',
+				'Location': 'Overland Park, KS',
+				'Education': 'Cử nhân Khoa học Máy tính',
+				'University': 'University of Kansas',
 			},
-			'Sở thích': [
+			'Hobbies': [
 				'Trò chơi điện tử',
 				'Anime & Manga',
 				'Ô tô & Xe máy',
@@ -247,12 +247,12 @@ const vietnamese = {
 				'May vá',
 				'Du lịch'
 			],
-			'Đang học': [
+			'Currently Learning': [
 				'Go',
 				'Rust',
 				'Unreal Engine',
 			],
-			'Triết lý thiết kế': [
+			'Design Philosophy': [
 				'Hiệu suất, Hiệu quả & Chi phí thấp',
 				'Sự đơn giản',
 				'Tính mô-đun & Khả năng bảo trì',
@@ -324,6 +324,14 @@ const vietnamese = {
 			slug: 'p3-valentine',
 		},
 	},
+	contact: {
+		title: "Liên hệ với tôi!",
+		form: {
+			name: "Tên",
+			email: "Email",
+			message: "Tin nhắn"
+		}
+	}
 }
 
 export { english, vietnamese };

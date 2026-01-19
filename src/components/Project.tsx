@@ -18,7 +18,7 @@ function Project() {
 	const [_, project] = projectData;
 
 	return (
-		<Page className="relative flex flex-col items-center justify-center p-4">
+		<Page className="relative flex flex-col items-center justify-center p-4 pointer-events-auto">
 			<ReturnButton />
 			<h1>{project.title}</h1>
 		</Page>

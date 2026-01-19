@@ -4,15 +4,23 @@ import LanguageToggle from '@components/LanguageToggle';
 import NavUI from '@components/NavUI';
 import { lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useLocation } from 'react-router';
 import LoadingScreen from './LoadingScreen';
 import { useBackground } from '@contexts/BackgroundContext';
 
 const BackgroundScene = lazy(() => import('@components/BackgroundScene'));
 
 function GlobalUI() {
+	const location = useLocation();
+	const isPortfolio = location.pathname.startsWith('/portfolio');
+
 	return (
 		<div className="h-screen w-screen relative bg-site-bg">
-			<div className="relative h-full w-full z-40 flex flex-col items-center justify-center">
+			<div
+				className={`relative h-full w-full z-40 flex flex-col items-center justify-center ${
+					isPortfolio ? 'pointer-events-none' : ''
+				}`}
+			>
 				<NavUI />
 				<div className="absolute bottom-4 right-4 z-50 hidden md:block">
 					<ToggleButtonsContainer />
@@ -36,7 +44,7 @@ function ToggleButtonsContainer() {
 	return (
 		<AnimatePresence>
 			{!isAssetsLoading && (
-				<div className="absolute bottom-4 right-4 z-50 flex flex-row gap-4">
+				<div className="absolute bottom-4 right-4 z-50 flex flex-row gap-4 pointer-events-auto">
 					<LanguageToggle />
 					{/* <ContentToggle /> */}
 				</div>

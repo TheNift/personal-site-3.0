@@ -9,6 +9,8 @@ export const ASSETS = {
   shelf: '/models/shelf.glb',
   motorcycle: '/models/sv650.glb',
   maxwell: '/models/maxwell.glb',
+  ray: '/models/ray01.glb',
+  gundamWing: '/models/gundam_wing.glb',
 } as const;
 
 export type AssetKey = keyof typeof ASSETS;

@@ -29,13 +29,17 @@ export interface BaseModelProps {
 	gltfPath?: string;
 	suspense?: boolean;
 	fallback?: ReactNode;
+	onClick?: (event: any) => void;
+	onPointerOver?: (event: any) => void;
+	onPointerOut?: (event: any) => void;
+	onPointerMove?: (event: any) => void;
+	receiveShadow?: boolean;
+	castShadow?: boolean;
 }
 
 export interface CubeProps extends Omit<BaseModelProps, 'children'> {
 	color?: string;
 	size?: [number, number, number];
-	receiveShadow?: boolean;
-	castShadow?: boolean;
 }
 
 export interface GLTFModelProps extends Omit<BaseModelProps, 'children' | 'gltfPath'> {

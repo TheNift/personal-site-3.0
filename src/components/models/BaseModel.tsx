@@ -15,12 +15,18 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 		{
 			position = [0, 0, 0],
 			rotation = [0, 0, 0],
-			scale = [1, 1, 1],
+			scale,
 			children,
 			onFrame,
 			gltfPath,
 			suspense = true,
 			fallback = null,
+			onClick,
+			onPointerOver,
+			onPointerOut,
+			onPointerMove,
+			castShadow,
+			receiveShadow,
 		},
 		ref
 	) => {
@@ -33,13 +39,20 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 				try {
 					const cloned = gltf.scene.clone(true);
 					cloned.traverse((child) => {
-						if (child instanceof Mesh && child.material) {
-							if (Array.isArray(child.material)) {
-								child.material = child.material.map((mat) =>
-									mat.clone()
-								);
-							} else {
-								child.material = child.material.clone();
+						if (child instanceof Mesh) {
+							if (castShadow !== undefined)
+								child.castShadow = castShadow;
+							if (receiveShadow !== undefined)
+								child.receiveShadow = receiveShadow;
+
+							if (child.material) {
+								if (Array.isArray(child.material)) {
+									child.material = child.material.map((mat) =>
+										mat.clone()
+									);
+								} else {
+									child.material = child.material.clone();
+								}
 							}
 						}
 					});
@@ -50,7 +63,7 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 				}
 			}
 			return null;
-		}, [gltf]);
+		}, [gltf, castShadow, receiveShadow]);
 
 		useImperativeHandle(ref, () => ({
 			get location() {
@@ -81,6 +94,10 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 						position={position}
 						rotation={rotation}
 						scale={scale}
+						onClick={onClick}
+						onPointerOver={onPointerOver}
+						onPointerOut={onPointerOut}
+						onPointerMove={onPointerMove}
 					>
 						<primitive object={clonedScene} />
 					</group>
@@ -93,6 +110,12 @@ export const BaseModel = forwardRef<ModelHandle, BaseModelProps>(
 					position={position}
 					rotation={rotation}
 					scale={scale}
+					onClick={onClick}
+					onPointerOver={onPointerOver}
+					onPointerOut={onPointerOut}
+					onPointerMove={onPointerMove}
+					castShadow={castShadow}
+					receiveShadow={receiveShadow}
 				>
 					{children}
 				</mesh>

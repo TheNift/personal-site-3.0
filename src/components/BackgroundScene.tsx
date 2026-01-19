@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useMemo } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
+import { useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { Vector3, Color } from 'three';
 import {
@@ -12,6 +13,9 @@ import {
 	Plant,
 	Shelf,
 	Phone,
+	InteractiveCube,
+	InteractiveRay,
+	InteractiveGundamWing,
 } from '@models';
 import { SpinningMaxwell } from '@components/SpinningMaxwell';
 import type { ModelHandle } from '@types';
@@ -133,6 +137,7 @@ const BackgroundScene = () => {
 
 	const { cameraPosition, isAssetsLoading } = useBackground();
 	const { strings } = useLanguage();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!isAssetsLoading && isSceneReady) {
@@ -153,6 +158,7 @@ const BackgroundScene = () => {
 		plant: useRef<ModelHandle>(null!),
 		shelf: useRef<ModelHandle>(null!),
 		phone: useRef<ModelHandle>(null!),
+		cube1: useRef<ModelHandle>(null!),
 	};
 
 	const cameraConfigs: CameraConfig[] = useMemo(
@@ -324,6 +330,26 @@ const BackgroundScene = () => {
 						receiveShadow={true}
 						castShadow={true}
 						suspense={true}
+					/>
+					<InteractiveRay
+						position={[-6, 5.32, 2.9]}
+						rotation={[0, 1.5 * Math.PI, 0]}
+						scale={[0.75, 0.75, 0.75]}
+						label="Camp Nelson"
+						slug="camp-nelson"
+						onNavigate={navigate}
+					/>
+					<InteractiveGundamWing
+						position={[-6.3, 5.28, 1.6]}
+						rotation={[
+							0.05 * Math.PI,
+							0.6 * Math.PI,
+							-0.05 * Math.PI,
+						]}
+						scale={[0.3, 0.3, 0.3]}
+						label="P3 Valentine"
+						slug="p3-valentine"
+						onNavigate={navigate}
 					/>
 					<Phone
 						ref={modelRefs.phone}

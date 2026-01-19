@@ -150,7 +150,7 @@ function DesktopNavUI() {
 
 	return (
 		<div
-			className="hidden md:flex flex-col absolute z-999 left-0 top-1/3 -translate-y-1/2"
+			className="hidden md:flex flex-col absolute z-999 left-0 top-1/3 -translate-y-1/2 pointer-events-auto"
 			style={{
 				height: navItems.length * 56 + 'px',
 			}}
@@ -194,7 +194,9 @@ function MobileNavUI() {
 				onClick={() => {
 					setIsMobileNavOpen(!isMobileNavOpen);
 				}}
-			></button>
+			>
+				<span className="sr-only">Menu</span>
+			</button>
 			<motion.div
 				initial={{ left: '-100vw' }}
 				animate={{ left: isMobileNavOpen ? 0 : '-100vw' }}
