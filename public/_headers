@@ -14,32 +14,32 @@
 /robots.txt
   Cache-Control: public, max-age=86400
 
-*.glb
+/models/*.glb
   Cache-Control: public, max-age=2592000, immutable
   
-*.gltf
+/models/*.gltf
   Cache-Control: public, max-age=2592000, immutable
 
-*.obj
+/models/*.obj
   Cache-Control: public, max-age=2592000, immutable
 
 /fonts/*
   Cache-Control: public, max-age=86400, immutable
 
-*.png
+/*.png
   Cache-Control: public, max-age=86400, immutable
 
-*.jpg
+/*.jpg
   Cache-Control: public, max-age=86400, immutable
 
-*.jpeg
+/*.jpeg
   Cache-Control: public, max-age=86400, immutable
 
-*.svg
+/*.svg
   Cache-Control: public, max-age=86400, immutable
 
-*.js
+/assets/*.js
   Cache-Control: public, max-age=86400, immutable
 
-*.css
+/assets/*.css
   Cache-Control: public, max-age=86400, immutable
