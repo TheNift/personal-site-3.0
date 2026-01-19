@@ -13,7 +13,6 @@ import {
 	Plant,
 	Shelf,
 	Phone,
-	InteractiveCube,
 	InteractiveRay,
 	InteractiveGundamWing,
 } from '@models';
@@ -37,6 +36,12 @@ function LightSource() {
 				color="white"
 				intensity={20}
 				position={[-3.8, 5, 4.2]}
+				castShadow={true}
+			/>
+			<pointLight
+				color="white"
+				intensity={5}
+				position={[-6, 7, 1]}
 				castShadow={true}
 			/>
 			<ambientLight color="white" intensity={5} />
@@ -325,7 +330,7 @@ const BackgroundScene = () => {
 						position={[-6, 5, 2.5]}
 						rotation={[0, 0 * Math.PI, 0]}
 						size={[1, 1, 1]}
-						scale={[1, 1, 1]}
+						scale={[1.2, 1, 1.2]}
 						color="white"
 						receiveShadow={true}
 						castShadow={true}

@@ -35,7 +35,8 @@ const english = {
 				'Locking in...',
 				'Finishing champ select...',
 				'Pressing a button...',
-				'Opening the oven...'
+				'Opening the oven...',
+				'Making coffee...'
 			],
 		},
         projectReturnText: 'Portfolio',
@@ -76,13 +77,13 @@ const english = {
 				'Cars & Motorcycles',
 				'Model Kits',
 				'Keyboards',
-				'Sewing',
+				'Tailoring',
 				'Traveling'
 			],
 			'Currently Learning': [
 				'Go',
-				'Rust',
-				'Unreal Engine',
+				'Java',
+				'Hytale Modding',
 			],
 			'Design Philosophy': [
 				'Performance, Efficiency, & Low Overhead',
@@ -147,13 +148,19 @@ const english = {
 		title: 'Portfolio',
 	},
 	projects: {
-		campNelson: {
-			title: 'Camp Nelson',
-			slug: 'camp-nelson',
+		personalSite: {
+			title: 'Personal Site',
+			slug: 'personal-site',
+			description: 'My personal site, built with React, Tailwind, and ThreeJS.',
+			image: 'personal-site.webp',
+			body: 'My personal site, built with React, Tailwind, and ThreeJS. I built it to showcase my current skills and capabilities, and plan to update it whenever I learn something new!',
 		},
-		p3Valentine: {
-			title: 'P3 Valentine',
-			slug: 'p3-valentine',
+		p3Projects: {
+			title: 'Projects @ Propaganda3',
+			slug: 'p3-projects',
+			description: 'Always making cool stuff at P3!',
+			image: 'p3-projects.webp',
+			body: 'At Propaganda3, I work on a wide spectrum of projects, from apps to websites to visual displays in game engines. Please reach out to talk about details!',
 		},
 	},
 	contact: {
@@ -195,20 +202,21 @@ const vietnamese = {
 			messages: [
 				'Đang mở khóa cửa trước...',
 				'Đang vào phòng của Jack...',
-				'Đang hoàn thành game này...',
-				'Đang lấy trà sữa...',
-				'Đang suy nghĩ rất kỹ...',
-				'Đang đẩy code lên prod...',
-				'Ối xin lỗi bị phân tâm...',
-				'Đang tập trung...',
-				'Đang hoàn thành chọn tướng...',
-				'Đang nhấn một nút...',
-				'Đang mở lò nướng...'
+				'Đang chơi nốt ván game...',
+				'Đang đi mua trà sữa...',
+				'Đang suy nghĩ rất lung...',
+				'Đang deploy lên production...',
+				'Úi xin lỗi, bị phân tâm chút...',
+				'Đang tập trung cao độ...',
+				'Đang chọn tướng xong...',
+				'Đang bấm nút...',
+				'Đang mở lò nướng...',
+                'Đang pha cà phê...'
 			],
 		},
         projectReturnText: 'Danh mục',
 		siteTitle: 'Jack Kill',
-		siteDescription: 'Kỹ sư phần mềm | Luôn luôn cải thiện',
+		siteDescription: 'Kỹ sư phần mềm | Luôn không ngừng tiến bộ',
 		languageToggle: 'English',
 	},
 	colors: {
@@ -227,7 +235,7 @@ const vietnamese = {
 		title: 'Trang chủ',
 	},
 	about: {
-		title: 'Giới thiệu',
+		title: 'About',
 		items: {
 			'Basic Info': {
 				'Name': 'Jack Kill',
@@ -244,17 +252,17 @@ const vietnamese = {
 				'Ô tô & Xe máy',
 				'Mô hình lắp ráp',
 				'Bàn phím cơ',
-				'May vá',
+				'May mặc',
 				'Du lịch'
 			],
 			'Currently Learning': [
 				'Go',
-				'Rust',
-				'Unreal Engine',
+				'Java',
+				'Modding Hytale',
 			],
 			'Design Philosophy': [
-				'Hiệu suất, Hiệu quả & Chi phí thấp',
-				'Sự đơn giản',
+				'Hiệu năng, Hiệu quả & Tối ưu hóa',
+				'Hướng tới sự đơn giản',
 				'Tính mô-đun & Khả năng bảo trì',
 			],
 		},
@@ -268,10 +276,10 @@ const vietnamese = {
 				date: 'Tháng 7, 2024 - Hiện tại',
 				location: 'Overland Park, KS',
 				lines: [
-					'Phát triển và triển khai các ứng dụng web và di động hiệu suất cao sử dụng React và React-Native thông qua Vite, Next.js, hoặc Expo, phục vụ hàng trăm nghìn người dùng trên nhiều ngành khác nhau.',
-					'Thực hiện phát triển chu kỳ đầy đủ của nhiều dự án trong một nhóm agile nhỏ, từ lập kế hoạch đến triển khai.',
-					'Tạo và tối ưu hóa các trang web và ứng dụng thương mại điện tử sử dụng Shopify API + Liquid, đóng góp vào các trang web tạo ra hơn $100k doanh thu hàng tháng.',
-					'Thiết kế backend có thể mở rộng sử dụng MongoDB, PHP, và NodeJS, hỗ trợ các ứng dụng có hàng nghìn người dùng.'
+					'Phát triển và ra mắt các ứng dụng web và di động hiệu năng cao sử dụng React và React-Native thông qua Vite, Next.js, hoặc Expo, phục vụ hàng trăm nghìn người dùng trong nhiều lĩnh vực khác nhau.',
+					'Thực hiện toàn bộ quy trình phát triển của nhiều dự án trong một nhóm agile nhỏ, từ lập kế hoạch đến triển khai.',
+					'Xây dựng và tối ưu hóa các trang web và ứng dụng thương mại điện tử sử dụng Shopify API + Liquid, đóng góp vào các trang web tạo ra doanh thu hơn 100 nghìn đô la hàng tháng.',
+					'Thiết kế các backend có khả năng mở rộng sử dụng MongoDB, PHP và NodeJS, hỗ trợ các ứng dụng với hàng nghìn người dùng.'
 				],
 			},
 			{
@@ -280,10 +288,10 @@ const vietnamese = {
 				date: 'Tháng 7, 2023 - Tháng 8, 2023',
 				location: 'New York, NY',
 				lines: [
-					'Hỗ trợ một nhóm các Chuyên viên phân tích IT trong việc cung cấp hỗ trợ cho nhân viên bệnh viện và cài đặt & cấu hình các hệ thống bệnh viện mới.',
-					'Thể hiện khả năng giải quyết vấn đề mạnh mẽ trong việc giải quyết các vấn đề IT phức tạp liên quan đến cả phần mềm và phần cứng.',
-					'Tham gia và đóng góp vào các cuộc họp nhân viên liên quan đến lập kế hoạch hệ thống, tối ưu hóa khối lượng công việc, và tích hợp học máy.',
-					'Học hỏi về triển khai công nghệ quy mô lớn, triển khai & tích hợp mạng, và quản lý hệ thống.'
+					'Hỗ trợ nhóm Chuyên viên phân tích CNTT trong việc cung cấp hỗ trợ cho nhân viên bệnh viện cũng như cài đặt và cấu hình các hệ thống bệnh viện mới.',
+					'Thể hiện khả năng giải quyết vấn đề mạnh mẽ khi xử lý các sự cố CNTT phức tạp liên quan đến cả phần mềm và phần cứng.',
+					'Tham dự và đóng góp vào các cuộc họp nhân viên liên quan đến lập kế hoạch hệ thống, tối ưu hóa khối lượng công việc và tích hợp học máy.',
+					'Tìm hiểu về triển khai công nghệ quy mô lớn, triển khai & tích hợp mạng, và quản lý hệ thống.'
 				],
 			},
 			{
@@ -292,10 +300,10 @@ const vietnamese = {
 				date: 'Tháng 7, 2022 - Tháng 1, 2024',
 				location: 'Overland Park, KS',
 				lines: [
-					'Hợp tác với một nhóm các nhà phát triển để tạo ra các ứng dụng & trang web khách hàng, cũng như các script bảo trì tự động & bộ thử nghiệm.',
-					'Có được kinh nghiệm thực tế với các phương pháp SaaS và Agile Production trong một môi trường học tập chủ động dựa trên nhóm năng động.',
-					'Có được hiểu biết sâu hơn về quản lý dự án bằng cách quan sát các dự án tiếp cận hàng chục nghìn người dùng cuối từ khái niệm hóa đến phát hành đầu tiên, trong khi xem xét các yếu tố khác nhau như hiệu suất, hiệu quả, và tuân thủ ADA.',
-					'Các công cụ được sử dụng bao gồm JavaScript, TypeScript, React-Native, Expo, Python, Selenium, PHP, AWS, và các codebase độc quyền.'
+					'Hợp tác với nhóm phát triển để tạo ra các ứng dụng & trang web cho khách hàng, cũng như các kịch bản bảo trì tự động & bộ kiểm thử.',
+					'Tích lũy kinh nghiệm thực tế với các phương pháp SaaS và Sản xuất Agile trong môi trường học tập năng động dựa trên làm việc nhóm.',
+					'Hiểu sâu hơn về quản lý dự án thông qua việc quan sát các dự án tiếp cận hàng chục nghìn người dùng cuối từ khâu lên ý tưởng đến bản phát hành đầu tiên, đồng thời cân nhắc các yếu tố như hiệu suất, hiệu quả và tuân thủ ADA.',
+					'Các công cụ sử dụng bao gồm JavaScript, TypeScript, React-Native, Expo, Python, Selenium, PHP, AWS và các codebase độc quyền.'
 				],
 			},
 			{
@@ -304,8 +312,8 @@ const vietnamese = {
 				date: 'Tháng 8, 2019 - Tháng 5, 2024',
 				location: 'Lawrence, KS',
 				lines: [
-					'Rèn luyện các kỹ năng kỹ thuật, lãnh đạo, và kinh doanh cùng với các sinh viên kỹ thuật KU uy tín khác.',
-					'Đảm nhận trách nhiệm trong fellowship, bao gồm tổ chức sự kiện, quản lý dự án, và cố vấn cho các khóa trẻ hơn.',
+					'Rèn luyện các kỹ năng kỹ thuật, lãnh đạo và kinh doanh cùng với các sinh viên kỹ thuật ưu tú khác của KU.',
+					'Đảm nhận các trách nhiệm trong chương trình học bổng, bao gồm tổ chức sự kiện, quản lý dự án và cố vấn cho các khóa sau.',
 					'Làm việc với các doanh nghiệp nhỏ và tổ chức phi lợi nhuận trong các dự án và sáng kiến dài hạn.'
 				],
 			},
@@ -315,13 +323,19 @@ const vietnamese = {
 		title: 'Danh mục',
 	},
 	projects: {
-		campNelson: {
-			title: 'Camp Nelson',
-			slug: 'camp-nelson',
+		personalSite: {
+			title: 'Trang cá nhân',
+			slug: 'personal-site',
+			description: 'Trang web cá nhân của tôi, được xây dựng bằng React, Tailwind và ThreeJS.',
+			image: 'personal-site.webp',
+			body: 'Trang web cá nhân của tôi, được xây dựng bằng React, Tailwind và ThreeJS. Tôi xây dựng nó để giới thiệu các kỹ năng và khả năng hiện tại của mình, và dự định sẽ cập nhật nó bất cứ khi nào tôi học được điều gì mới!',
 		},
-		p3Valentine: {
-			title: 'P3 Valentine',
-			slug: 'p3-valentine',
+		p3Projects: {
+			title: 'Dự án @ Propaganda3',
+			slug: 'p3-projects',
+			description: 'Luôn tạo ra những sản phẩm thú vị tại P3!',
+			image: 'p3-projects.webp',
+			body: 'Tại Propaganda3, tôi làm việc trên nhiều dự án khác nhau, từ ứng dụng, trang web đến các hiển thị trực quan trong công cụ trò chơi. Hãy liên hệ để trao đổi chi tiết!',
 		},
 	},
 	contact: {

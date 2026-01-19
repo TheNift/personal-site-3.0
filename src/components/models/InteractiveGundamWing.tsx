@@ -80,14 +80,14 @@ export function InteractiveGundamWing({
 
 			if (meshRef.current.mesh) {
 				const scaleMultiplier =
-					hoverRef.current && canInteract ? 1.5 : 1;
+					hoverRef.current && canInteract ? 1.2 : 1;
 				targetScale.copy(initialScale).multiplyScalar(scaleMultiplier);
 				meshRef.current.mesh.scale.lerp(targetScale, step);
 				currentScale.current.copy(meshRef.current.mesh.scale);
 
 				if (labelGroupRef.current) {
 					labelTargetPos.set(
-						position[0] + 0.25,
+						position[0],
 						position[1] + labelBaseOffset * scaleMultiplier,
 						position[2]
 					);

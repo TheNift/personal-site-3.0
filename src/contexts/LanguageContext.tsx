@@ -27,6 +27,41 @@ const getBrowserLanguage = (): Language => {
 	return 'eng';
 };
 
+const mergeDeep = (base: any, override: any): any => {
+	if (override === undefined || override === null) return base;
+
+	if (
+		typeof base !== 'object' ||
+		typeof override !== 'object' ||
+		Array.isArray(base) ||
+		Array.isArray(override)
+	) {
+		return override;
+	}
+
+	const result = { ...base };
+
+	Object.keys(override).forEach((key) => {
+		const baseValue = base[key];
+		const overrideValue = override[key];
+
+		if (
+			typeof baseValue === 'object' &&
+			baseValue !== null &&
+			typeof overrideValue === 'object' &&
+			overrideValue !== null &&
+			!Array.isArray(baseValue) &&
+			!Array.isArray(overrideValue)
+		) {
+			result[key] = mergeDeep(baseValue, overrideValue);
+		} else {
+			result[key] = overrideValue;
+		}
+	});
+
+	return result;
+};
+
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({
 	children,
 }) => {
@@ -46,7 +81,12 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({
 		localStorage.setItem('preferred-language', language);
 	}, [language]);
 
-	const strings = language === 'viet' ? vietnamese : english;
+	const strings = React.useMemo(() => {
+		if (language === 'viet') {
+			return mergeDeep(english, vietnamese) as StringsType;
+		}
+		return english;
+	}, [language]);
 
 	return (
 		<LanguageContext.Provider

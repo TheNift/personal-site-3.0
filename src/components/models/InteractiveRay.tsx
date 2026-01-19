@@ -80,7 +80,7 @@ export function InteractiveRay({
 
 			if (meshRef.current.mesh) {
 				const scaleMultiplier =
-					hoverRef.current && canInteract ? 1.5 : 1;
+					hoverRef.current && canInteract ? 1.2 : 1;
 				targetScale.copy(initialScale).multiplyScalar(scaleMultiplier);
 				meshRef.current.mesh.scale.lerp(targetScale, step);
 				currentScale.current.copy(meshRef.current.mesh.scale);
