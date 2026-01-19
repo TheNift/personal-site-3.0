@@ -185,10 +185,10 @@ const BackgroundScene = () => {
 			},
 			// Portfolio - looking at shelf
 			{
-				position: new Vector3(-3, 6, 1),
+				position: new Vector3(-3, 6, 1.5),
 				lookAt:
 					modelRefs.shelf.current?.location.add(
-						new Vector3(0, 0.5, 0)
+						new Vector3(0, 1, 0)
 					) || new Vector3(0, 0, 0),
 			},
 			// Contact - looking at phone
@@ -343,7 +343,7 @@ const BackgroundScene = () => {
 						position={[-6.3, 5.28, 1.6]}
 						rotation={[
 							0.05 * Math.PI,
-							0.6 * Math.PI,
+							0.5 * Math.PI,
 							-0.05 * Math.PI,
 						]}
 						scale={[0.3, 0.3, 0.3]}

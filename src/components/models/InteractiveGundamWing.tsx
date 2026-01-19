@@ -32,7 +32,7 @@ export function InteractiveGundamWing({
 	const location = useLocation();
 	const initialPos = useMemo(() => new Vector3(...position), [position]);
 	const targetPos = useMemo(() => new Vector3(), []);
-	const labelBaseOffset = 1.15;
+	const labelBaseOffset = 1.1;
 	const labelTargetPos = useMemo(() => new Vector3(), []);
 	const labelGroupRef = useRef<Group>(null);
 	const initialScale = useMemo(() => new Vector3(...scale), [scale]);
@@ -55,7 +55,7 @@ export function InteractiveGundamWing({
 	useLayoutEffect(() => {
 		if (labelGroupRef.current) {
 			labelGroupRef.current.position.set(
-				position[0] + 0.25,
+				position[0],
 				position[1] + labelBaseOffset,
 				position[2]
 			);
@@ -80,7 +80,7 @@ export function InteractiveGundamWing({
 
 			if (meshRef.current.mesh) {
 				const scaleMultiplier =
-					hoverRef.current && canInteract ? 1.2 : 1;
+					hoverRef.current && canInteract ? 1.5 : 1;
 				targetScale.copy(initialScale).multiplyScalar(scaleMultiplier);
 				meshRef.current.mesh.scale.lerp(targetScale, step);
 				currentScale.current.copy(meshRef.current.mesh.scale);
