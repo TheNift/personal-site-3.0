@@ -80,7 +80,7 @@ const english = {
 				'Tailoring',
 				'Traveling'
 			],
-			'Profficient In': [
+			'Proficient In': [
 				'JavaScript',
 				'TypeScript',
 				'React (Vite, Next.js)',
