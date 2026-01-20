@@ -99,6 +99,10 @@ const english = {
 				'Lean Towards Simplicity',
 				'Modularity & Maintainability',
 			],
+			'Languages': [
+				'English (Native)',
+				'Vietnamese (A1)',
+			],
 		},
 	},
 	experience: {
@@ -277,6 +281,10 @@ const vietnamese = {
 				'Hiệu năng, Hiệu quả & Tối ưu hóa',
 				'Hướng tới sự đơn giản',
 				'Tính mô-đun & Khả năng bảo trì',
+			],
+			'Languages': [
+				'Tiếng Anh (Mẹo)',
+				'Tiếng Việt (A1)',
 			],
 		},
 	},
