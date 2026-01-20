@@ -75,7 +75,7 @@ export function ContactForm3D() {
 				transform
 				occlude
 				scale={0.052}
-				className={`w-[300px] h-[550px] bg-black p-4 overflow-y-auto select-none transition-opacity duration-700 ${
+				className={`w-[300px] h-[550px] bg-black p-4 overflow-y-auto select-none transition-opacity duration-700 overflow-x-hidden relative ${
 					isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
 				}`}
 				style={{
@@ -168,12 +168,20 @@ export function ContactForm3D() {
 
 						<div className="flex flex-col items-center gap-4">
 							{RECAPTCHA_SITE_KEY && (
-								<ReCAPTCHA
-									sitekey={RECAPTCHA_SITE_KEY}
-									onChange={setCaptchaToken}
-									theme="dark"
-									className="transform scale-75 origin-center"
-								/>
+								<div>
+									<label
+										htmlFor="g-recaptcha-response"
+										className="sr-only absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0"
+									>
+										reCAPTCHA verification
+									</label>
+									<ReCAPTCHA
+										sitekey={RECAPTCHA_SITE_KEY}
+										onChange={setCaptchaToken}
+										theme="dark"
+										className="transform scale-75 origin-center"
+									/>
+								</div>
 							)}
 
 							<div className="flex flex-row items-center justify-end w-full gap-2">
